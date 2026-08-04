@@ -19,5 +19,8 @@
     },
     "screenshot": {
         "save_path": "./tmp/"
+    },
+    "mode": {
+        "vision": false
     }
 }

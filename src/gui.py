@@ -6,7 +6,8 @@ import time
 from datetime import datetime
 from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
-    QLabel, QPushButton, QTextEdit, QGroupBox, QMessageBox, QSplitter
+    QLabel, QPushButton, QTextEdit, QGroupBox, QMessageBox, QSplitter,
+    QComboBox
 )
 from PyQt5.QtCore import Qt, QThread, pyqtSignal, QRect, QPoint, QTimer
 from PyQt5.QtGui import QPixmap, QPainter, QPen, QColor, QFont, QMouseEvent
@@ -17,7 +18,7 @@ from logger import get_logger
 from screenshot import capture_screen
 from detector import detect_change
 from ocr import image_to_text
-from ai_analyzer import analyze_question
+from ai_analyzer import analyze_question, analyze_question_with_image
 from cleanup import cleanup_screenshots
 
 logger = get_logger("gui")
@@ -182,19 +183,60 @@ class AIWorker(QThread):
                 self.error.emit("AI分析失败，详见日志")
 
 
+class VisionAIWorker(QThread):
+    """视觉模式AI Worker：直接分析图片"""
+    finished = pyqtSignal(dict)
+    error = pyqtSignal(str)
+
+    def __init__(self, image_path, api_key, model, base_url, max_tokens=2048, enable_thinking=False):
+        super().__init__()
+        self.image_path = image_path
+        self.api_key = api_key
+        self.model = model
+        self.base_url = base_url
+        self.max_tokens = max_tokens
+        self.enable_thinking = enable_thinking
+        self._cancelled = False
+
+    def cancel(self):
+        self._cancelled = True
+
+    def run(self):
+        try:
+            if self._cancelled:
+                return
+            result = analyze_question_with_image(
+                self.image_path,
+                question_type="single",
+                api_key=self.api_key,
+                model=self.model,
+                base_url=self.base_url,
+                max_tokens=self.max_tokens,
+                enable_thinking=self.enable_thinking,
+            )
+            if not self._cancelled:
+                self.finished.emit(result)
+        except Exception:
+            logger.exception("VisionAIWorker 执行失败")
+            if not self._cancelled:
+                self.error.emit("视觉分析失败，详见日志")
+
+
 class ListenThread(QThread):
     screenshot_signal = pyqtSignal(str)
     ocr_signal = pyqtSignal(str)
+    vision_signal = pyqtSignal(str)  # 新增：视觉模式信号，传递图片路径
     status_signal = pyqtSignal(str)
     change_signal = pyqtSignal()
     
-    def __init__(self, region, config_path):
+    def __init__(self, region, config_path, vision_mode=False):
         super().__init__()
         self.region = region
         self.config_path = config_path
         self.is_running = True
         self.last_image = None
         self._force_ocr = True  # 首帧/换区域后强制 OCR 一次
+        self.vision_mode = vision_mode
 
     def set_region(self, region):
         """运行时更换区域：原子更新 + 重置基线 + 强制下一帧 OCR。
@@ -204,6 +246,11 @@ class ListenThread(QThread):
         self.region = region
         self.last_image = None
         self._force_ocr = True
+
+    def set_vision_mode(self, enabled):
+        """切换视觉模式"""
+        self.vision_mode = enabled
+        self._force_ocr = True  # 切换模式后强制识别一次
 
     def run(self):
         try:
@@ -229,12 +276,16 @@ class ListenThread(QThread):
 
                 if self._force_ocr:
                     self._force_ocr = False
-                    self.status_signal.emit("OCR识别中...")
-                    question_text = image_to_text(current_image)
-                    if question_text.strip():
-                        self.ocr_signal.emit(question_text)
+                    if self.vision_mode:
+                        self.status_signal.emit("视觉识别中...")
+                        self.vision_signal.emit(current_image)
                     else:
-                        self.status_signal.emit("未识别到文字")
+                        self.status_signal.emit("OCR识别中...")
+                        question_text = image_to_text(current_image)
+                        if question_text.strip():
+                            self.ocr_signal.emit(question_text)
+                        else:
+                            self.status_signal.emit("未识别到文字")
                 elif self.last_image is not None:
                     has_change = detect_change(self.last_image, current_image, threshold)
 
@@ -248,13 +299,17 @@ class ListenThread(QThread):
 
                         stable_image = capture_screen(region=region)
                         self.screenshot_signal.emit(stable_image)
-                        self.status_signal.emit("OCR识别中...")
-                        question_text = image_to_text(stable_image)
 
-                        if question_text.strip():
-                            self.ocr_signal.emit(question_text)
+                        if self.vision_mode:
+                            self.status_signal.emit("视觉识别中...")
+                            self.vision_signal.emit(stable_image)
                         else:
-                            self.status_signal.emit("未识别到文字")
+                            self.status_signal.emit("OCR识别中...")
+                            question_text = image_to_text(stable_image)
+                            if question_text.strip():
+                                self.ocr_signal.emit(question_text)
+                            else:
+                                self.status_signal.emit("未识别到文字")
 
                         # 用稳定帧更新 last_image，避免下一轮用过渡帧重复触发
                         current_image = stable_image
@@ -371,6 +426,28 @@ class MainWindow(QMainWindow):
         """)
         toolbar.addWidget(self.quit_btn)
         
+        # 模式切换
+        self.mode_combo = QComboBox()
+        self.mode_combo.addItems(["OCR模式", "视觉模式"])
+        self.mode_combo.setFixedHeight(36)
+        self.mode_combo.setFixedWidth(100)
+        self.mode_combo.setStyleSheet("""
+            QComboBox {
+                background-color: #2196F3;
+                color: white;
+                border: none;
+                border-radius: 6px;
+                font-size: 12px;
+                font-weight: bold;
+                padding: 0 8px;
+            }
+            QComboBox:hover { background-color: #1976D2; }
+            QComboBox::drop-down { border: none; }
+            QComboBox::down-arrow { image: none; }
+        """)
+        self.mode_combo.currentIndexChanged.connect(self.on_mode_changed)
+        toolbar.addWidget(self.mode_combo)
+        
         main_layout.addLayout(toolbar)
         
         # ========== 截图预览 ==========
@@ -461,6 +538,9 @@ class MainWindow(QMainWindow):
             if self.region:
                 self.region_label.setText(f"{self.region[2]}x{self.region[3]} @ ({self.region[0]},{self.region[1]})")
                 self.show_region_preview()
+            # 加载视觉模式设置
+            vision_mode = config.get("mode", {}).get("vision", False)
+            self.mode_combo.setCurrentIndex(1 if vision_mode else 0)
         except Exception:
             logger.exception("加载配置失败: %s", self.config_path)
     
@@ -542,21 +622,56 @@ class MainWindow(QMainWindow):
             self.image_label.setPixmap(scaled)
             self.image_label.is_selecting = False
 
+    def on_mode_changed(self, index):
+        """模式切换：0=OCR，1=视觉"""
+        vision_enabled = (index == 1)
+        mode_name = "视觉模式" if vision_enabled else "OCR模式"
+        self.statusBar().showMessage(f"已切换到{mode_name}")
+
+        # 保存配置
+        try:
+            with open(self.config_path, "r", encoding="utf-8") as f:
+                config = json.load(f)
+            if "mode" not in config:
+                config["mode"] = {}
+            config["mode"]["vision"] = vision_enabled
+            with open(self.config_path, "w", encoding="utf-8") as f:
+                json.dump(config, f, ensure_ascii=False, indent=4)
+        except Exception:
+            logger.exception("保存模式配置失败")
+
+        # 通知预览线程
+        if self.listen_thread and self.listen_thread.isRunning():
+            self.listen_thread.set_vision_mode(vision_enabled)
+
     def _ensure_preview_thread(self):
         """确保预览线程在跑；若已在跑则原子更新区域（不重启，避免竞态）。"""
         if self.region is None:
             return
+
+        # 读取视觉模式配置
+        vision_mode = False
+        try:
+            with open(self.config_path, "r", encoding="utf-8") as f:
+                config = json.load(f)
+            vision_mode = config.get("mode", {}).get("vision", False)
+        except Exception:
+            pass
+
         if self.listen_thread is not None and self.listen_thread.isRunning():
             self.listen_thread.set_region(self.region)
-            logger.info("预览区域已更新 region=%s", self.region)
+            self.listen_thread.set_vision_mode(vision_mode)
+            logger.info("预览区域已更新 region=%s, vision=%s", self.region, vision_mode)
             return
-        self.listen_thread = ListenThread(self.region, self.config_path)
+
+        self.listen_thread = ListenThread(self.region, self.config_path, vision_mode=vision_mode)
         self.listen_thread.screenshot_signal.connect(self.on_screenshot)
         self.listen_thread.ocr_signal.connect(self.on_ocr)
+        self.listen_thread.vision_signal.connect(self.on_vision)
         self.listen_thread.status_signal.connect(lambda x: self.statusBar().showMessage(x))
         self.listen_thread.change_signal.connect(self.on_change)
         self.listen_thread.start()
-        logger.info("预览线程已启动 region=%s", self.region)
+        logger.info("预览线程已启动 region=%s, vision=%s", self.region, vision_mode)
         self.statusBar().showMessage("预览中（未开始答题）")
     
     def toggle_listening(self):
@@ -600,9 +715,12 @@ class MainWindow(QMainWindow):
             self._ensure_preview_thread()
 
         # 立即对当前已识别的题目发起 AI 答题，不必等下一次变化
-        current = self.ocr_text.toPlainText().strip()
-        if current:
-            self.start_ai(current)
+        # 仅在OCR模式下执行（视觉模式下由vision_signal触发）
+        vision_mode = self.mode_combo.currentIndex() == 1
+        if not vision_mode:
+            current = self.ocr_text.toPlainText().strip()
+            if current:
+                self.start_ai(current)
 
         self.statusBar().showMessage("答题中...")
     
@@ -648,6 +766,14 @@ class MainWindow(QMainWindow):
         else:
             self.answer_label.setText("未开始答题")
             self.explanation_text.clear()
+
+    def on_vision(self, image_path):
+        """视觉模式：收到图片路径，直接调AI分析"""
+        if self.is_running:
+            self.start_ai_vision(image_path)
+        else:
+            self.answer_label.setText("未开始答题")
+            self.explanation_text.clear()
     
     def start_ai(self, question_text):
         # 取消旧的AI请求
@@ -676,6 +802,35 @@ class MainWindow(QMainWindow):
             logger.exception("启动 AIWorker 失败")
             self.answer_label.setText("错误")
             self.statusBar().showMessage("AI 启动失败，详见日志")
+
+    def start_ai_vision(self, image_path):
+        """视觉模式：直接用图片调AI"""
+        # 取消旧的AI请求
+        if self.ai_worker and self.ai_worker.isRunning():
+            self.ai_worker.cancel()
+            self.ai_worker.wait(5000)
+
+        try:
+            with open(self.config_path, "r", encoding="utf-8") as f:
+                config = json.load(f)
+
+            api_key = config.get("ai", {}).get("api_key", "")
+            model = config.get("ai", {}).get("model", "step-3.7-flash")
+            base_url = config.get("ai", {}).get("base_url", "https://api.stepfun.com/v1")
+            max_tokens = config.get("ai", {}).get("max_tokens", 2048)
+            enable_thinking = config.get("ai", {}).get("enable_thinking", False)
+
+            self.ai_worker = VisionAIWorker(
+                image_path, api_key, model, base_url,
+                max_tokens=max_tokens, enable_thinking=enable_thinking,
+            )
+            self.ai_worker.finished.connect(self.on_ai_done)
+            self.ai_worker.error.connect(self.on_ai_error)
+            self.ai_worker.start()
+        except Exception:
+            logger.exception("启动 VisionAIWorker 失败")
+            self.answer_label.setText("错误")
+            self.statusBar().showMessage("视觉AI启动失败，详见日志")
 
     def on_ai_error(self, msg):
         self.answer_label.setText("错误")
