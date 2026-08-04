@@ -1,0 +1,17 @@
+# 图像处理
+opencv-python>=4.8.0
+scikit-image>=0.21.0
+Pillow>=10.0.0
+numpy>=1.24.0
+
+# OCR（代码使用 rapidocr_onnxruntime，非 PaddleOCR）
+rapidocr-onnxruntime>=1.3.0
+
+# OpenAI API
+openai>=1.0.0
+
+# GUI（PyQt5）
+PyQt5>=5.15.0
+
+# 截图（Windows 平台使用，Mac 用系统 screencapture）
+pyautogui>=0.9.54

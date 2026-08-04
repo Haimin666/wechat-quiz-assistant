@@ -1,0 +1,23 @@
+{
+    "auto_detection": {
+        "enabled": true,
+        "interval": 0.5,
+        "change_threshold": 0.05,
+        "screenshot_region": [
+            24,
+            175,
+            448,
+            454
+        ]
+    },
+    "ai": {
+        "api_key": "Rl9w9TJAW33zNpLOXLY2IdcXZD7ORh1st0nDsaiz6RkXzzrLEv0eGRLlDLqWfXkW",
+        "base_url": "https://api.stepfun.com/v1",
+        "model": "step-3.7-flash",
+        "max_tokens": 2048,
+        "enable_thinking": false
+    },
+    "screenshot": {
+        "save_path": "./tmp/"
+    }
+}
