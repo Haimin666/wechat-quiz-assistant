@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
     QLabel, QPushButton, QTextEdit, QGroupBox, QMessageBox, QSplitter
 )
-from PyQt5.QtCore import Qt, QThread, pyqtSignal, QRect, QPoint
+from PyQt5.QtCore import Qt, QThread, pyqtSignal, QRect, QPoint, QTimer
 from PyQt5.QtGui import QPixmap, QPainter, QPen, QColor, QFont, QMouseEvent
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -278,6 +278,8 @@ class MainWindow(QMainWindow):
         self.config_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "config.json")
         self.ai_worker = None
         self.listen_thread = None
+        self._selector = None
+        self._selector_timer = None
         
         self.init_ui()
         self.load_config()
@@ -491,20 +493,26 @@ class MainWindow(QMainWindow):
             return
 
         logger.info("启动区域选择器（左上角→右下角，右键重选，ESC 取消）")
-        selector = RegionSelector()
-        selector.show()
+        self._selector = RegionSelector()
+        self._selector.show()
 
-        # 嵌套事件循环，直到选择窗口关闭
-        while selector.isVisible():
-            QApplication.processEvents()
-            time.sleep(0.01)
+        # 使用 QTimer 轮询，避免阻塞 GUI
+        self._selector_timer = QTimer(self)
+        self._selector_timer.timeout.connect(self._poll_selector)
+        self._selector_timer.start(50)
 
-        if selector.result_region:
-            region = tuple(selector.result_region)
-            self.on_region_selected(region)
-        else:
-            self.tip_label.setText("已取消，可重新点击「选取区域」")
-            self.statusBar().showMessage("区域选择已取消")
+    def _poll_selector(self):
+        """轮询区域选择器状态"""
+        if not self._selector.isVisible():
+            self._selector_timer.stop()
+            if self._selector.result_region:
+                region = tuple(self._selector.result_region)
+                self.on_region_selected(region)
+            else:
+                self.tip_label.setText("已取消，可重新点击「选取区域」")
+                self.statusBar().showMessage("区域选择已取消")
+            self._selector = None
+            self._selector_timer = None
 
     def on_region_selected(self, region):
         """区域选择完成"""
@@ -645,7 +653,7 @@ class MainWindow(QMainWindow):
         # 取消旧的AI请求
         if self.ai_worker and self.ai_worker.isRunning():
             self.ai_worker.cancel()
-            self.ai_worker.wait(500)
+            self.ai_worker.wait(5000)  # 等待最多5秒，让线程有机会响应取消
 
         try:
             with open(self.config_path, "r", encoding="utf-8") as f:
@@ -681,6 +689,12 @@ class MainWindow(QMainWindow):
         self.is_running = False
         if self.listen_thread:
             self.listen_thread.stop()
+            self.listen_thread.wait(2000)  # 等待线程结束
+        if self.ai_worker and self.ai_worker.isRunning():
+            self.ai_worker.cancel()
+            self.ai_worker.wait(2000)
+        if self._selector_timer:
+            self._selector_timer.stop()
         QApplication.quit()
     
     def closeEvent(self, event):

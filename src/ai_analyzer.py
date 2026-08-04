@@ -96,6 +96,7 @@ def analyze_question(
         max_tokens=max_tokens,
         temperature=0.3,
         extra_body={"enable_thinking": enable_thinking},
+        timeout=30,
     )
 
     # 解析响应
