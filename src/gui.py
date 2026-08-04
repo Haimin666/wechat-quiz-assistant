@@ -292,7 +292,7 @@ class MainWindow(QMainWindow):
         # 若已配置区域，立即启动常驻预览线程（截图+变化检测+OCR），
         # 与「开始」按钮解耦：点开始才真正调 AI 答题。
         if self.region:
-            self._start_preview_thread()
+            self._ensure_preview_thread()
     
     def init_ui(self):
         self.setWindowTitle("微信小程序自动答题助手")
@@ -531,7 +531,7 @@ class MainWindow(QMainWindow):
         self.statusBar().showMessage("区域已设置")
         logger.info("截图区域已设置: %s", region)
         # 区域变更，重启预览线程使用新区域
-        self._start_preview_thread()
+        self._ensure_preview_thread()
     
     def show_region_preview(self):
         """显示区域预览"""
@@ -597,7 +597,7 @@ class MainWindow(QMainWindow):
 
         # 确保预览线程在跑（防止异常退出后点开始）
         if not (self.listen_thread and self.listen_thread.isRunning()):
-            self._start_preview_thread()
+            self._ensure_preview_thread()
 
         # 立即对当前已识别的题目发起 AI 答题，不必等下一次变化
         current = self.ocr_text.toPlainText().strip()
