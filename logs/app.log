@@ -3693,3 +3693,49 @@
 2026-08-05 09:09:17 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_090915_630970.png vs ./tmp/screenshot_20260805_090916_730877.png)
 2026-08-05 09:09:18 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_090917_826009.png (region=[24, 175, 448, 454])
 2026-08-05 09:09:18 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_090916_730877.png vs ./tmp/screenshot_20260805_090917_826009.png)
+2026-08-05 09:11:09 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_091108_689404.png (region=[24, 175, 448, 454])
+2026-08-05 09:11:09 | INFO    | cleanup | 清理旧截图: 删除 10 个，保留 20 个
+2026-08-05 09:11:09 | INFO    | gui | 预览线程已启动 region=[24, 175, 448, 454], vision=False
+2026-08-05 09:11:10 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_091109_908487.png (region=[24, 175, 448, 454])
+2026-08-05 09:11:10 | INFO    | ocr | 初始化 RapidOCR 引擎
+2026-08-05 09:11:10 | DEBUG   | PIL.Image | Importing PngImagePlugin
+2026-08-05 09:11:10 | DEBUG   | PIL.PngImagePlugin | STREAM b'IHDR' 16 13
+2026-08-05 09:11:10 | DEBUG   | PIL.PngImagePlugin | STREAM b'iCCP' 41 2737
+2026-08-05 09:11:10 | DEBUG   | PIL.PngImagePlugin | iCCP profile name b'ICC Profile'
+2026-08-05 09:11:10 | DEBUG   | PIL.PngImagePlugin | Compression method 0
+2026-08-05 09:11:10 | DEBUG   | PIL.PngImagePlugin | STREAM b'eXIf' 2790 86
+2026-08-05 09:11:10 | DEBUG   | PIL.PngImagePlugin | STREAM b'iTXt' 2888 470
+2026-08-05 09:11:10 | DEBUG   | PIL.PngImagePlugin | STREAM b'iDOT' 3370 28
+2026-08-05 09:11:10 | DEBUG   | PIL.PngImagePlugin | b'iDOT' 3370 28 (unknown)
+2026-08-05 09:11:10 | DEBUG   | PIL.PngImagePlugin | STREAM b'IDAT' 3410 16384
+2026-08-05 09:11:14 | DEBUG   | ocr | OCR 识别 36 行: ./tmp/screenshot_20260805_091109_908487.png
+2026-08-05 09:11:14 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_091114_744842.png (region=[24, 175, 448, 454])
+2026-08-05 09:11:15 | DEBUG   | detector | SSIM score=0.9884 threshold=0.05 has_change=False (./tmp/screenshot_20260805_091109_908487.png vs ./tmp/screenshot_20260805_091114_744842.png)
+2026-08-05 09:11:16 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_091115_712649.png (region=[24, 175, 448, 454])
+2026-08-05 09:11:16 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_091114_744842.png vs ./tmp/screenshot_20260805_091115_712649.png)
+2026-08-05 09:11:17 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_091116_728084.png (region=[24, 175, 448, 454])
+2026-08-05 09:11:17 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_091115_712649.png vs ./tmp/screenshot_20260805_091116_728084.png)
+2026-08-05 09:11:18 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_091117_710417.png (region=[24, 175, 448, 454])
+2026-08-05 09:11:18 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_091116_728084.png vs ./tmp/screenshot_20260805_091117_710417.png)
+2026-08-05 09:11:19 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_091118_725603.png (region=[24, 175, 448, 454])
+2026-08-05 09:11:19 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_091117_710417.png vs ./tmp/screenshot_20260805_091118_725603.png)
+2026-08-05 09:11:20 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_091119_738626.png (region=[24, 175, 448, 454])
+2026-08-05 09:11:20 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_091118_725603.png vs ./tmp/screenshot_20260805_091119_738626.png)
+2026-08-05 09:11:21 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_091121_097366.png (region=[24, 175, 448, 454])
+2026-08-05 09:11:21 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_091119_738626.png vs ./tmp/screenshot_20260805_091121_097366.png)
+2026-08-05 09:11:22 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_091122_170724.png (region=[24, 175, 448, 454])
+2026-08-05 09:11:22 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_091121_097366.png vs ./tmp/screenshot_20260805_091122_170724.png)
+2026-08-05 09:11:23 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_091123_280440.png (region=[24, 175, 448, 454])
+2026-08-05 09:11:23 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_091122_170724.png vs ./tmp/screenshot_20260805_091123_280440.png)
+2026-08-05 09:11:24 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_091124_379278.png (region=[24, 175, 448, 454])
+2026-08-05 09:11:24 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_091123_280440.png vs ./tmp/screenshot_20260805_091124_379278.png)
+2026-08-05 09:11:25 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_091125_365842.png (region=[24, 175, 448, 454])
+2026-08-05 09:11:26 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_091124_379278.png vs ./tmp/screenshot_20260805_091125_365842.png)
+2026-08-05 09:11:27 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_091126_635431.png (region=[24, 175, 448, 454])
+2026-08-05 09:11:27 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_091125_365842.png vs ./tmp/screenshot_20260805_091126_635431.png)
+2026-08-05 09:11:28 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_091127_786785.png (region=[24, 175, 448, 454])
+2026-08-05 09:11:28 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_091126_635431.png vs ./tmp/screenshot_20260805_091127_786785.png)
+2026-08-05 09:11:29 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_091128_818413.png (region=[24, 175, 448, 454])
+2026-08-05 09:11:29 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_091127_786785.png vs ./tmp/screenshot_20260805_091128_818413.png)
+2026-08-05 09:11:30 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_091129_834828.png (region=[24, 175, 448, 454])
+2026-08-05 09:11:30 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_091128_818413.png vs ./tmp/screenshot_20260805_091129_834828.png)
