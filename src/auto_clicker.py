@@ -11,12 +11,12 @@ logger = get_logger("auto_clicker")
 class OptionDetector:
     """通过 OCR 识别 A/B/C/D 选项文字，返回其坐标位置。"""
 
-    # 选项文字的正则模式
+    # 选项文字的正则模式 - 宽松匹配，支持 "A" "A." "A、" "A." "A " 等
     OPTION_PATTERNS = [
-        re.compile(r"^A[.、。\s]"),
-        re.compile(r"^B[.、。\s]"),
-        re.compile(r"^C[.、。\s]"),
-        re.compile(r"^D[.、。\s]"),
+        re.compile(r"^A[.、。\s:：]?"),
+        re.compile(r"^B[.、。\s:：]?"),
+        re.compile(r"^C[.、。\s:：]?"),
+        re.compile(r"^D[.、。\s:：]?"),
     ]
 
     @staticmethod

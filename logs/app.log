@@ -3995,3 +3995,404 @@ Traceback (most recent call last):
   File "/Users/lbc/miniconda3/lib/python3.13/json/decoder.py", line 348, in decode
     raise JSONDecodeError("Extra data", s, end)
 json.decoder.JSONDecodeError: Extra data: line 31 column 1 (char 651)
+2026-08-05 11:52:39 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115238_759953.png (region=[24, 175, 448, 454])
+2026-08-05 11:52:39 | INFO    | cleanup | 清理旧截图: 删除 28 个，保留 20 个
+2026-08-05 11:52:39 | INFO    | gui | 预览线程已启动 region=[24, 175, 448, 454], vision=False
+2026-08-05 11:52:41 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115240_365512.png (region=[24, 175, 448, 454])
+2026-08-05 11:52:41 | INFO    | ocr | 初始化 RapidOCR 引擎
+2026-08-05 11:52:42 | DEBUG   | PIL.Image | Importing PngImagePlugin
+2026-08-05 11:52:42 | DEBUG   | PIL.PngImagePlugin | STREAM b'IHDR' 16 13
+2026-08-05 11:52:42 | DEBUG   | PIL.PngImagePlugin | STREAM b'iCCP' 41 2737
+2026-08-05 11:52:42 | DEBUG   | PIL.PngImagePlugin | iCCP profile name b'ICC Profile'
+2026-08-05 11:52:42 | DEBUG   | PIL.PngImagePlugin | Compression method 0
+2026-08-05 11:52:42 | DEBUG   | PIL.PngImagePlugin | STREAM b'eXIf' 2790 86
+2026-08-05 11:52:42 | DEBUG   | PIL.PngImagePlugin | STREAM b'iTXt' 2888 470
+2026-08-05 11:52:42 | DEBUG   | PIL.PngImagePlugin | STREAM b'iDOT' 3370 28
+2026-08-05 11:52:42 | DEBUG   | PIL.PngImagePlugin | b'iDOT' 3370 28 (unknown)
+2026-08-05 11:52:42 | DEBUG   | PIL.PngImagePlugin | STREAM b'IDAT' 3410 16384
+2026-08-05 11:52:46 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115245_399134.png (region=[24, 175, 448, 454])
+2026-08-05 11:52:47 | DEBUG   | detector | SSIM score=0.5804 threshold=0.05 has_change=True (./tmp/screenshot_20260805_115240_365512.png vs ./tmp/screenshot_20260805_115245_399134.png)
+2026-08-05 11:52:47 | INFO    | detector | 检测到题目变化: score=0.5804 < 0.95
+2026-08-05 11:52:47 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115247_315944.png (region=[24, 175, 448, 454])
+2026-08-05 11:52:47 | DEBUG   | PIL.PngImagePlugin | STREAM b'IHDR' 16 13
+2026-08-05 11:52:47 | DEBUG   | PIL.PngImagePlugin | STREAM b'iCCP' 41 2737
+2026-08-05 11:52:47 | DEBUG   | PIL.PngImagePlugin | iCCP profile name b'ICC Profile'
+2026-08-05 11:52:47 | DEBUG   | PIL.PngImagePlugin | Compression method 0
+2026-08-05 11:52:47 | DEBUG   | PIL.PngImagePlugin | STREAM b'eXIf' 2790 86
+2026-08-05 11:52:47 | DEBUG   | PIL.PngImagePlugin | STREAM b'iTXt' 2888 470
+2026-08-05 11:52:47 | DEBUG   | PIL.PngImagePlugin | STREAM b'iDOT' 3370 28
+2026-08-05 11:52:47 | DEBUG   | PIL.PngImagePlugin | b'iDOT' 3370 28 (unknown)
+2026-08-05 11:52:47 | DEBUG   | PIL.PngImagePlugin | STREAM b'IDAT' 3410 16384
+2026-08-05 11:52:50 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115250_129920.png (region=[24, 175, 448, 454])
+2026-08-05 11:52:50 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115247_315944.png vs ./tmp/screenshot_20260805_115250_129920.png)
+2026-08-05 11:52:52 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115251_399504.png (region=[24, 175, 448, 454])
+2026-08-05 11:52:52 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115250_129920.png vs ./tmp/screenshot_20260805_115251_399504.png)
+2026-08-05 11:52:53 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115252_943313.png (region=[24, 175, 448, 454])
+2026-08-05 11:52:54 | DEBUG   | detector | SSIM score=0.8156 threshold=0.05 has_change=True (./tmp/screenshot_20260805_115251_399504.png vs ./tmp/screenshot_20260805_115252_943313.png)
+2026-08-05 11:52:54 | INFO    | detector | 检测到题目变化: score=0.8156 < 0.95
+2026-08-05 11:52:55 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115254_395781.png (region=[24, 175, 448, 454])
+2026-08-05 11:52:55 | DEBUG   | PIL.PngImagePlugin | STREAM b'IHDR' 16 13
+2026-08-05 11:52:55 | DEBUG   | PIL.PngImagePlugin | STREAM b'iCCP' 41 2737
+2026-08-05 11:52:55 | DEBUG   | PIL.PngImagePlugin | iCCP profile name b'ICC Profile'
+2026-08-05 11:52:55 | DEBUG   | PIL.PngImagePlugin | Compression method 0
+2026-08-05 11:52:55 | DEBUG   | PIL.PngImagePlugin | STREAM b'eXIf' 2790 86
+2026-08-05 11:52:55 | DEBUG   | PIL.PngImagePlugin | STREAM b'iTXt' 2888 470
+2026-08-05 11:52:55 | DEBUG   | PIL.PngImagePlugin | STREAM b'iDOT' 3370 28
+2026-08-05 11:52:55 | DEBUG   | PIL.PngImagePlugin | b'iDOT' 3370 28 (unknown)
+2026-08-05 11:52:55 | DEBUG   | PIL.PngImagePlugin | STREAM b'IDAT' 3410 16384
+2026-08-05 11:52:58 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115257_880890.png (region=[24, 175, 448, 454])
+2026-08-05 11:52:58 | DEBUG   | detector | SSIM score=0.8076 threshold=0.05 has_change=True (./tmp/screenshot_20260805_115254_395781.png vs ./tmp/screenshot_20260805_115257_880890.png)
+2026-08-05 11:52:58 | INFO    | detector | 检测到题目变化: score=0.8076 < 0.95
+2026-08-05 11:52:59 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115258_620504.png (region=[24, 175, 448, 454])
+2026-08-05 11:52:59 | DEBUG   | PIL.PngImagePlugin | STREAM b'IHDR' 16 13
+2026-08-05 11:52:59 | DEBUG   | PIL.PngImagePlugin | STREAM b'iCCP' 41 2737
+2026-08-05 11:52:59 | DEBUG   | PIL.PngImagePlugin | iCCP profile name b'ICC Profile'
+2026-08-05 11:52:59 | DEBUG   | PIL.PngImagePlugin | Compression method 0
+2026-08-05 11:52:59 | DEBUG   | PIL.PngImagePlugin | STREAM b'eXIf' 2790 86
+2026-08-05 11:52:59 | DEBUG   | PIL.PngImagePlugin | STREAM b'iTXt' 2888 470
+2026-08-05 11:52:59 | DEBUG   | PIL.PngImagePlugin | STREAM b'iDOT' 3370 28
+2026-08-05 11:52:59 | DEBUG   | PIL.PngImagePlugin | b'iDOT' 3370 28 (unknown)
+2026-08-05 11:52:59 | DEBUG   | PIL.PngImagePlugin | STREAM b'IDAT' 3410 16384
+2026-08-05 11:53:02 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115301_651927.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:02 | DEBUG   | detector | SSIM score=0.8051 threshold=0.05 has_change=True (./tmp/screenshot_20260805_115258_620504.png vs ./tmp/screenshot_20260805_115301_651927.png)
+2026-08-05 11:53:02 | INFO    | detector | 检测到题目变化: score=0.8051 < 0.95
+2026-08-05 11:53:03 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115302_936106.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:03 | DEBUG   | PIL.PngImagePlugin | STREAM b'IHDR' 16 13
+2026-08-05 11:53:03 | DEBUG   | PIL.PngImagePlugin | STREAM b'iCCP' 41 2737
+2026-08-05 11:53:03 | DEBUG   | PIL.PngImagePlugin | iCCP profile name b'ICC Profile'
+2026-08-05 11:53:03 | DEBUG   | PIL.PngImagePlugin | Compression method 0
+2026-08-05 11:53:03 | DEBUG   | PIL.PngImagePlugin | STREAM b'eXIf' 2790 86
+2026-08-05 11:53:03 | DEBUG   | PIL.PngImagePlugin | STREAM b'iTXt' 2888 470
+2026-08-05 11:53:03 | DEBUG   | PIL.PngImagePlugin | STREAM b'iDOT' 3370 28
+2026-08-05 11:53:03 | DEBUG   | PIL.PngImagePlugin | b'iDOT' 3370 28 (unknown)
+2026-08-05 11:53:03 | DEBUG   | PIL.PngImagePlugin | STREAM b'IDAT' 3410 16384
+2026-08-05 11:53:05 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115304_803374.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:05 | DEBUG   | detector | SSIM score=0.9996 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115302_936106.png vs ./tmp/screenshot_20260805_115304_803374.png)
+2026-08-05 11:53:07 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115306_226277.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:07 | DEBUG   | detector | SSIM score=0.9327 threshold=0.05 has_change=True (./tmp/screenshot_20260805_115304_803374.png vs ./tmp/screenshot_20260805_115306_226277.png)
+2026-08-05 11:53:07 | INFO    | detector | 检测到题目变化: score=0.9327 < 0.95
+2026-08-05 11:53:08 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115307_915649.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:08 | DEBUG   | PIL.PngImagePlugin | STREAM b'IHDR' 16 13
+2026-08-05 11:53:08 | DEBUG   | PIL.PngImagePlugin | STREAM b'iCCP' 41 2737
+2026-08-05 11:53:08 | DEBUG   | PIL.PngImagePlugin | iCCP profile name b'ICC Profile'
+2026-08-05 11:53:08 | DEBUG   | PIL.PngImagePlugin | Compression method 0
+2026-08-05 11:53:08 | DEBUG   | PIL.PngImagePlugin | STREAM b'eXIf' 2790 86
+2026-08-05 11:53:08 | DEBUG   | PIL.PngImagePlugin | STREAM b'iTXt' 2888 470
+2026-08-05 11:53:08 | DEBUG   | PIL.PngImagePlugin | STREAM b'iDOT' 3370 28
+2026-08-05 11:53:08 | DEBUG   | PIL.PngImagePlugin | b'iDOT' 3370 28 (unknown)
+2026-08-05 11:53:08 | DEBUG   | PIL.PngImagePlugin | STREAM b'IDAT' 3410 16384
+2026-08-05 11:53:10 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115310_038181.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:11 | DEBUG   | detector | SSIM score=0.9789 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115307_915649.png vs ./tmp/screenshot_20260805_115310_038181.png)
+2026-08-05 11:53:12 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115311_634916.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:13 | DEBUG   | detector | SSIM score=0.7587 threshold=0.05 has_change=True (./tmp/screenshot_20260805_115310_038181.png vs ./tmp/screenshot_20260805_115311_634916.png)
+2026-08-05 11:53:13 | INFO    | detector | 检测到题目变化: score=0.7587 < 0.95
+2026-08-05 11:53:14 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115313_381697.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:14 | DEBUG   | PIL.PngImagePlugin | STREAM b'IHDR' 16 13
+2026-08-05 11:53:14 | DEBUG   | PIL.PngImagePlugin | STREAM b'iCCP' 41 2737
+2026-08-05 11:53:14 | DEBUG   | PIL.PngImagePlugin | iCCP profile name b'ICC Profile'
+2026-08-05 11:53:14 | DEBUG   | PIL.PngImagePlugin | Compression method 0
+2026-08-05 11:53:14 | DEBUG   | PIL.PngImagePlugin | STREAM b'eXIf' 2790 86
+2026-08-05 11:53:14 | DEBUG   | PIL.PngImagePlugin | STREAM b'iTXt' 2888 470
+2026-08-05 11:53:14 | DEBUG   | PIL.PngImagePlugin | STREAM b'iDOT' 3370 28
+2026-08-05 11:53:14 | DEBUG   | PIL.PngImagePlugin | b'iDOT' 3370 28 (unknown)
+2026-08-05 11:53:14 | DEBUG   | PIL.PngImagePlugin | STREAM b'IDAT' 3410 16384
+2026-08-05 11:53:16 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115315_984952.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:16 | DEBUG   | detector | SSIM score=0.5749 threshold=0.05 has_change=True (./tmp/screenshot_20260805_115313_381697.png vs ./tmp/screenshot_20260805_115315_984952.png)
+2026-08-05 11:53:16 | INFO    | detector | 检测到题目变化: score=0.5749 < 0.95
+2026-08-05 11:53:17 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115317_204367.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:17 | DEBUG   | PIL.PngImagePlugin | STREAM b'IHDR' 16 13
+2026-08-05 11:53:17 | DEBUG   | PIL.PngImagePlugin | STREAM b'iCCP' 41 2737
+2026-08-05 11:53:17 | DEBUG   | PIL.PngImagePlugin | iCCP profile name b'ICC Profile'
+2026-08-05 11:53:17 | DEBUG   | PIL.PngImagePlugin | Compression method 0
+2026-08-05 11:53:17 | DEBUG   | PIL.PngImagePlugin | STREAM b'eXIf' 2790 86
+2026-08-05 11:53:17 | DEBUG   | PIL.PngImagePlugin | STREAM b'iTXt' 2888 470
+2026-08-05 11:53:17 | DEBUG   | PIL.PngImagePlugin | STREAM b'iDOT' 3370 28
+2026-08-05 11:53:17 | DEBUG   | PIL.PngImagePlugin | b'iDOT' 3370 28 (unknown)
+2026-08-05 11:53:17 | DEBUG   | PIL.PngImagePlugin | STREAM b'IDAT' 3410 16384
+2026-08-05 11:53:21 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115321_126268.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:21 | DEBUG   | detector | SSIM score=0.6188 threshold=0.05 has_change=True (./tmp/screenshot_20260805_115317_204367.png vs ./tmp/screenshot_20260805_115321_126268.png)
+2026-08-05 11:53:21 | INFO    | detector | 检测到题目变化: score=0.6188 < 0.95
+2026-08-05 11:53:22 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115322_050921.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:22 | DEBUG   | PIL.PngImagePlugin | STREAM b'IHDR' 16 13
+2026-08-05 11:53:22 | DEBUG   | PIL.PngImagePlugin | STREAM b'iCCP' 41 2737
+2026-08-05 11:53:22 | DEBUG   | PIL.PngImagePlugin | iCCP profile name b'ICC Profile'
+2026-08-05 11:53:22 | DEBUG   | PIL.PngImagePlugin | Compression method 0
+2026-08-05 11:53:22 | DEBUG   | PIL.PngImagePlugin | STREAM b'eXIf' 2790 86
+2026-08-05 11:53:22 | DEBUG   | PIL.PngImagePlugin | STREAM b'iTXt' 2888 470
+2026-08-05 11:53:22 | DEBUG   | PIL.PngImagePlugin | STREAM b'iDOT' 3370 28
+2026-08-05 11:53:22 | DEBUG   | PIL.PngImagePlugin | b'iDOT' 3370 28 (unknown)
+2026-08-05 11:53:22 | DEBUG   | PIL.PngImagePlugin | STREAM b'IDAT' 3410 16384
+2026-08-05 11:53:24 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115324_329140.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:25 | DEBUG   | detector | SSIM score=0.7060 threshold=0.05 has_change=True (./tmp/screenshot_20260805_115322_050921.png vs ./tmp/screenshot_20260805_115324_329140.png)
+2026-08-05 11:53:25 | INFO    | detector | 检测到题目变化: score=0.7060 < 0.95
+2026-08-05 11:53:25 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115325_338692.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:25 | DEBUG   | PIL.PngImagePlugin | STREAM b'IHDR' 16 13
+2026-08-05 11:53:25 | DEBUG   | PIL.PngImagePlugin | STREAM b'iCCP' 41 2737
+2026-08-05 11:53:25 | DEBUG   | PIL.PngImagePlugin | iCCP profile name b'ICC Profile'
+2026-08-05 11:53:25 | DEBUG   | PIL.PngImagePlugin | Compression method 0
+2026-08-05 11:53:25 | DEBUG   | PIL.PngImagePlugin | STREAM b'eXIf' 2790 86
+2026-08-05 11:53:25 | DEBUG   | PIL.PngImagePlugin | STREAM b'iTXt' 2888 470
+2026-08-05 11:53:25 | DEBUG   | PIL.PngImagePlugin | STREAM b'iDOT' 3370 28
+2026-08-05 11:53:25 | DEBUG   | PIL.PngImagePlugin | b'iDOT' 3370 28 (unknown)
+2026-08-05 11:53:25 | DEBUG   | PIL.PngImagePlugin | STREAM b'IDAT' 3410 16384
+2026-08-05 11:53:30 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115330_696021.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:31 | DEBUG   | detector | SSIM score=0.6528 threshold=0.05 has_change=True (./tmp/screenshot_20260805_115325_338692.png vs ./tmp/screenshot_20260805_115330_696021.png)
+2026-08-05 11:53:31 | INFO    | detector | 检测到题目变化: score=0.6528 < 0.95
+2026-08-05 11:53:32 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115331_503553.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:32 | DEBUG   | PIL.PngImagePlugin | STREAM b'IHDR' 16 13
+2026-08-05 11:53:32 | DEBUG   | PIL.PngImagePlugin | STREAM b'iCCP' 41 2737
+2026-08-05 11:53:32 | DEBUG   | PIL.PngImagePlugin | iCCP profile name b'ICC Profile'
+2026-08-05 11:53:32 | DEBUG   | PIL.PngImagePlugin | Compression method 0
+2026-08-05 11:53:32 | DEBUG   | PIL.PngImagePlugin | STREAM b'eXIf' 2790 86
+2026-08-05 11:53:32 | DEBUG   | PIL.PngImagePlugin | STREAM b'iTXt' 2888 470
+2026-08-05 11:53:32 | DEBUG   | PIL.PngImagePlugin | STREAM b'iDOT' 3370 28
+2026-08-05 11:53:32 | DEBUG   | PIL.PngImagePlugin | b'iDOT' 3370 28 (unknown)
+2026-08-05 11:53:32 | DEBUG   | PIL.PngImagePlugin | STREAM b'IDAT' 3410 16384
+2026-08-05 11:53:35 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115334_854226.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:35 | DEBUG   | detector | SSIM score=0.8178 threshold=0.05 has_change=True (./tmp/screenshot_20260805_115331_503553.png vs ./tmp/screenshot_20260805_115334_854226.png)
+2026-08-05 11:53:35 | INFO    | detector | 检测到题目变化: score=0.8178 < 0.95
+2026-08-05 11:53:36 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115335_999592.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:36 | DEBUG   | PIL.PngImagePlugin | STREAM b'IHDR' 16 13
+2026-08-05 11:53:36 | DEBUG   | PIL.PngImagePlugin | STREAM b'iCCP' 41 2737
+2026-08-05 11:53:36 | DEBUG   | PIL.PngImagePlugin | iCCP profile name b'ICC Profile'
+2026-08-05 11:53:36 | DEBUG   | PIL.PngImagePlugin | Compression method 0
+2026-08-05 11:53:36 | DEBUG   | PIL.PngImagePlugin | STREAM b'eXIf' 2790 86
+2026-08-05 11:53:36 | DEBUG   | PIL.PngImagePlugin | STREAM b'iTXt' 2888 470
+2026-08-05 11:53:36 | DEBUG   | PIL.PngImagePlugin | STREAM b'iDOT' 3370 28
+2026-08-05 11:53:36 | DEBUG   | PIL.PngImagePlugin | b'iDOT' 3370 28 (unknown)
+2026-08-05 11:53:36 | DEBUG   | PIL.PngImagePlugin | STREAM b'IDAT' 3410 16384
+2026-08-05 11:53:40 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115339_612060.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:40 | DEBUG   | detector | SSIM score=0.9218 threshold=0.05 has_change=True (./tmp/screenshot_20260805_115335_999592.png vs ./tmp/screenshot_20260805_115339_612060.png)
+2026-08-05 11:53:40 | INFO    | detector | 检测到题目变化: score=0.9218 < 0.95
+2026-08-05 11:53:41 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115340_710536.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:41 | DEBUG   | PIL.PngImagePlugin | STREAM b'IHDR' 16 13
+2026-08-05 11:53:41 | DEBUG   | PIL.PngImagePlugin | STREAM b'iCCP' 41 2737
+2026-08-05 11:53:41 | DEBUG   | PIL.PngImagePlugin | iCCP profile name b'ICC Profile'
+2026-08-05 11:53:41 | DEBUG   | PIL.PngImagePlugin | Compression method 0
+2026-08-05 11:53:41 | DEBUG   | PIL.PngImagePlugin | STREAM b'eXIf' 2790 86
+2026-08-05 11:53:41 | DEBUG   | PIL.PngImagePlugin | STREAM b'iTXt' 2888 470
+2026-08-05 11:53:41 | DEBUG   | PIL.PngImagePlugin | STREAM b'iDOT' 3370 28
+2026-08-05 11:53:41 | DEBUG   | PIL.PngImagePlugin | b'iDOT' 3370 28 (unknown)
+2026-08-05 11:53:41 | DEBUG   | PIL.PngImagePlugin | STREAM b'IDAT' 3410 16384
+2026-08-05 11:53:45 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115344_717506.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:45 | DEBUG   | detector | SSIM score=0.7544 threshold=0.05 has_change=True (./tmp/screenshot_20260805_115340_710536.png vs ./tmp/screenshot_20260805_115344_717506.png)
+2026-08-05 11:53:45 | INFO    | detector | 检测到题目变化: score=0.7544 < 0.95
+2026-08-05 11:53:46 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115346_010181.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:46 | DEBUG   | PIL.PngImagePlugin | STREAM b'IHDR' 16 13
+2026-08-05 11:53:46 | DEBUG   | PIL.PngImagePlugin | STREAM b'iCCP' 41 2737
+2026-08-05 11:53:46 | DEBUG   | PIL.PngImagePlugin | iCCP profile name b'ICC Profile'
+2026-08-05 11:53:46 | DEBUG   | PIL.PngImagePlugin | Compression method 0
+2026-08-05 11:53:46 | DEBUG   | PIL.PngImagePlugin | STREAM b'eXIf' 2790 86
+2026-08-05 11:53:46 | DEBUG   | PIL.PngImagePlugin | STREAM b'iTXt' 2888 470
+2026-08-05 11:53:46 | DEBUG   | PIL.PngImagePlugin | STREAM b'iDOT' 3370 28
+2026-08-05 11:53:46 | DEBUG   | PIL.PngImagePlugin | b'iDOT' 3370 28 (unknown)
+2026-08-05 11:53:46 | DEBUG   | PIL.PngImagePlugin | STREAM b'IDAT' 3410 16384
+2026-08-05 11:53:50 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115349_869122.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:50 | DEBUG   | detector | SSIM score=0.7410 threshold=0.05 has_change=True (./tmp/screenshot_20260805_115346_010181.png vs ./tmp/screenshot_20260805_115349_869122.png)
+2026-08-05 11:53:50 | INFO    | detector | 检测到题目变化: score=0.7410 < 0.95
+2026-08-05 11:53:51 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115350_865418.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:51 | DEBUG   | PIL.PngImagePlugin | STREAM b'IHDR' 16 13
+2026-08-05 11:53:51 | DEBUG   | PIL.PngImagePlugin | STREAM b'iCCP' 41 2737
+2026-08-05 11:53:51 | DEBUG   | PIL.PngImagePlugin | iCCP profile name b'ICC Profile'
+2026-08-05 11:53:51 | DEBUG   | PIL.PngImagePlugin | Compression method 0
+2026-08-05 11:53:51 | DEBUG   | PIL.PngImagePlugin | STREAM b'eXIf' 2790 86
+2026-08-05 11:53:51 | DEBUG   | PIL.PngImagePlugin | STREAM b'iTXt' 2888 470
+2026-08-05 11:53:51 | DEBUG   | PIL.PngImagePlugin | STREAM b'iDOT' 3370 28
+2026-08-05 11:53:51 | DEBUG   | PIL.PngImagePlugin | b'iDOT' 3370 28 (unknown)
+2026-08-05 11:53:51 | DEBUG   | PIL.PngImagePlugin | STREAM b'IDAT' 3410 16384
+2026-08-05 11:53:54 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115354_459226.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:55 | DEBUG   | detector | SSIM score=0.7409 threshold=0.05 has_change=True (./tmp/screenshot_20260805_115350_865418.png vs ./tmp/screenshot_20260805_115354_459226.png)
+2026-08-05 11:53:55 | INFO    | detector | 检测到题目变化: score=0.7409 < 0.95
+2026-08-05 11:53:55 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115355_334376.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:55 | DEBUG   | PIL.PngImagePlugin | STREAM b'IHDR' 16 13
+2026-08-05 11:53:55 | DEBUG   | PIL.PngImagePlugin | STREAM b'iCCP' 41 2737
+2026-08-05 11:53:55 | DEBUG   | PIL.PngImagePlugin | iCCP profile name b'ICC Profile'
+2026-08-05 11:53:55 | DEBUG   | PIL.PngImagePlugin | Compression method 0
+2026-08-05 11:53:55 | DEBUG   | PIL.PngImagePlugin | STREAM b'eXIf' 2790 86
+2026-08-05 11:53:55 | DEBUG   | PIL.PngImagePlugin | STREAM b'iTXt' 2888 470
+2026-08-05 11:53:55 | DEBUG   | PIL.PngImagePlugin | STREAM b'iDOT' 3370 28
+2026-08-05 11:53:55 | DEBUG   | PIL.PngImagePlugin | b'iDOT' 3370 28 (unknown)
+2026-08-05 11:53:55 | DEBUG   | PIL.PngImagePlugin | STREAM b'IDAT' 3410 16384
+2026-08-05 11:53:58 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115357_990314.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:58 | DEBUG   | detector | SSIM score=0.7544 threshold=0.05 has_change=True (./tmp/screenshot_20260805_115355_334376.png vs ./tmp/screenshot_20260805_115357_990314.png)
+2026-08-05 11:53:58 | INFO    | detector | 检测到题目变化: score=0.7544 < 0.95
+2026-08-05 11:53:59 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115359_094493.png (region=[24, 175, 448, 454])
+2026-08-05 11:53:59 | DEBUG   | PIL.PngImagePlugin | STREAM b'IHDR' 16 13
+2026-08-05 11:53:59 | DEBUG   | PIL.PngImagePlugin | STREAM b'iCCP' 41 2737
+2026-08-05 11:53:59 | DEBUG   | PIL.PngImagePlugin | iCCP profile name b'ICC Profile'
+2026-08-05 11:53:59 | DEBUG   | PIL.PngImagePlugin | Compression method 0
+2026-08-05 11:53:59 | DEBUG   | PIL.PngImagePlugin | STREAM b'eXIf' 2790 86
+2026-08-05 11:53:59 | DEBUG   | PIL.PngImagePlugin | STREAM b'iTXt' 2888 470
+2026-08-05 11:53:59 | DEBUG   | PIL.PngImagePlugin | STREAM b'iDOT' 3370 28
+2026-08-05 11:53:59 | DEBUG   | PIL.PngImagePlugin | b'iDOT' 3370 28 (unknown)
+2026-08-05 11:53:59 | DEBUG   | PIL.PngImagePlugin | STREAM b'IDAT' 3410 16384
+2026-08-05 11:54:01 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115401_436706.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:02 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115359_094493.png vs ./tmp/screenshot_20260805_115401_436706.png)
+2026-08-05 11:54:03 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115402_657658.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:03 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115401_436706.png vs ./tmp/screenshot_20260805_115402_657658.png)
+2026-08-05 11:54:04 | INFO    | gui | 自动点击: 开启
+2026-08-05 11:54:04 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115404_306871.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:04 | DEBUG   | detector | SSIM score=0.9982 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115402_657658.png vs ./tmp/screenshot_20260805_115404_306871.png)
+2026-08-05 11:54:05 | INFO    | ai_analyzer | 调用 AI 模型: model=step-3.7-flash, max_tokens=2048, enable_thinking=False, reasoning_effort=low, 题目长度=108
+2026-08-05 11:54:05 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115405_478820.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:06 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115404_306871.png vs ./tmp/screenshot_20260805_115405_478820.png)
+2026-08-05 11:54:06 | DEBUG   | openai._base_client | Request options: {'method': 'post', 'url': '/chat/completions', 'timeout': 30, 'files': None, 'idempotency_key': 'stainless-python-retry-c27323c3-4a36-453b-8d8c-437bdd8a48c8', 'security': {'bearer_auth': True}, 'content': None, 'json_data': {'messages': [{'role': 'system', 'content': '你是一个专业的答题助手，擅长分析选择题并给出准确答案。'}, {'role': 'user', 'content': '你是一个专业的答题助手。请分析以下单选题并给出答案。\n\n题目内容：\n某建筑企业2013年1月购买钢材80000元,土\n地使用权5亿元，小型机具价值60000元，某公\n司发行的债券200万元.根据企业会计准则及\n其相关规定,属于无形资产的是()\nA钢材\nB小型机具\n公司债券\n土地使用权\n\n请按以下格式返回（不要添加其他内容）：\n答案：[选项字母，如 D 或 AB]\n解析：[选项内容，如：土地使用权属于无形资产]'}], 'model': 'step-3.7-flash', 'max_tokens': 2048, 'temperature': 0.3}, 'extra_json': {'enable_thinking': False, 'reasoning_effort': 'low'}}
+2026-08-05 11:54:06 | DEBUG   | openai._base_client | Sending HTTP Request: POST https://api.stepfun.com/v1/chat/completions
+2026-08-05 11:54:06 | DEBUG   | httpcore.connection | connect_tcp.started host='api.stepfun.com' port=443 local_address=None timeout=30 socket_options=None
+2026-08-05 11:54:06 | DEBUG   | httpcore.connection | connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x13fa1d940>
+2026-08-05 11:54:06 | DEBUG   | httpcore.connection | start_tls.started ssl_context=<ssl.SSLContext object at 0x13e3c6600> server_hostname='api.stepfun.com' timeout=30
+2026-08-05 11:54:06 | DEBUG   | httpcore.connection | start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x13f9296d0>
+2026-08-05 11:54:06 | DEBUG   | httpcore.http11 | send_request_headers.started request=<Request [b'POST']>
+2026-08-05 11:54:06 | DEBUG   | httpcore.http11 | send_request_headers.complete
+2026-08-05 11:54:06 | DEBUG   | httpcore.http11 | send_request_body.started request=<Request [b'POST']>
+2026-08-05 11:54:06 | DEBUG   | httpcore.http11 | send_request_body.complete
+2026-08-05 11:54:06 | DEBUG   | httpcore.http11 | receive_response_headers.started request=<Request [b'POST']>
+2026-08-05 11:54:06 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115406_541574.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:07 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115405_478820.png vs ./tmp/screenshot_20260805_115406_541574.png)
+2026-08-05 11:54:07 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115407_675000.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:08 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115406_541574.png vs ./tmp/screenshot_20260805_115407_675000.png)
+2026-08-05 11:54:08 | DEBUG   | httpcore.http11 | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Server', b'nginx'), (b'Date', b'Wed, 05 Aug 2026 03:54:08 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'1627'), (b'Connection', b'keep-alive'), (b'Set-Cookie', b'INGRESSCOOKIE=1785902047.836.9854.253357|41608414b127efd3b4a05908e72b4160; Path=/; HttpOnly'), (b'Cache-Control', b'no-cache'), (b'X-Trace-Id', b'3a72f9ce9c0e755c2ebee7b699153d16'), (b'X-Upstream-Latency', b'0'), (b'X-Proxy-Latency', b'590749'), (b'X-Router-Id', b'path:/v1/chat/'), (b'Access-Control-Allow-Origin', b'*'), (b'Access-Control-Allow-Credentials', b'true'), (b'Access-Control-Allow-Methods', b'GET, PUT, POST, DELETE, PATCH, OPTIONS'), (b'Access-Control-Allow-Headers', b'Content-Type, Origin, X-CSRF-Token, Authorization, AccessToken, Token, Range, x-stainless-os, X-Stainless-Arch, X-Stainless-Lang, X-Stainless-OS, X-Stainless-Package-Version, X-Stainless-Read-Timeout, X-Stainless-Retry-Count, X-Stainless-Runtime, X-Stainless-Runtime-Version, X-Stainless-Timeout, X-Stainless-Async, X-Stainless-OS-Version, X-Stainless-MCP, x-step-excel-agent-sub-user, X-Trace-Id'), (b'Access-Control-Expose-Headers', b'Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers, X-Trace-Id'), (b'Access-Control-Max-Age', b'86400'), (b'server-timing', b'inner; dur=1450')])
+2026-08-05 11:54:08 | INFO    | httpx | HTTP Request: POST https://api.stepfun.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-05 11:54:08 | DEBUG   | httpcore.http11 | receive_response_body.started request=<Request [b'POST']>
+2026-08-05 11:54:08 | DEBUG   | httpcore.http11 | receive_response_body.complete
+2026-08-05 11:54:08 | DEBUG   | httpcore.http11 | response_closed.started
+2026-08-05 11:54:08 | DEBUG   | httpcore.http11 | response_closed.complete
+2026-08-05 11:54:08 | DEBUG   | openai._base_client | HTTP Response: POST https://api.stepfun.com/v1/chat/completions "200 OK" Headers({'server': 'nginx', 'date': 'Wed, 05 Aug 2026 03:54:08 GMT', 'content-type': 'application/json; charset=utf-8', 'content-length': '1627', 'connection': 'keep-alive', 'set-cookie': 'INGRESSCOOKIE=1785902047.836.9854.253357|41608414b127efd3b4a05908e72b4160; Path=/; HttpOnly', 'cache-control': 'no-cache', 'x-trace-id': '3a72f9ce9c0e755c2ebee7b699153d16', 'x-upstream-latency': '0', 'x-proxy-latency': '590749', 'x-router-id': 'path:/v1/chat/', 'access-control-allow-origin': '*', 'access-control-allow-credentials': 'true', 'access-control-allow-methods': 'GET, PUT, POST, DELETE, PATCH, OPTIONS', 'access-control-allow-headers': 'Content-Type, Origin, X-CSRF-Token, Authorization, AccessToken, Token, Range, x-stainless-os, X-Stainless-Arch, X-Stainless-Lang, X-Stainless-OS, X-Stainless-Package-Version, X-Stainless-Read-Timeout, X-Stainless-Retry-Count, X-Stainless-Runtime, X-Stainless-Runtime-Version, X-Stainless-Timeout, X-Stainless-Async, X-Stainless-OS-Version, X-Stainless-MCP, x-step-excel-agent-sub-user, X-Trace-Id', 'access-control-expose-headers': 'Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers, X-Trace-Id', 'access-control-max-age': '86400', 'server-timing': 'inner; dur=1450'})
+2026-08-05 11:54:08 | DEBUG   | openai._base_client | request_id: None
+2026-08-05 11:54:08 | DEBUG   | ai_analyzer | AI 完成: finish_reason=stop, completion_tokens=123, max_tokens=2048
+2026-08-05 11:54:08 | INFO    | ai_analyzer | AI 响应: 答案：D
+解析：土地使用权属于无形资产，钢材属于存货，小型机具属于固定资产或周转材料，公司债券属于金融资产。
+2026-08-05 11:54:08 | INFO    | auto_clicker | 检测到 0 个选项: []
+2026-08-05 11:54:08 | WARNING | gui | 未检测到选项位置，跳过自动点击
+2026-08-05 11:54:09 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115408_663099.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:09 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115407_675000.png vs ./tmp/screenshot_20260805_115408_663099.png)
+2026-08-05 11:54:10 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115409_708295.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:10 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115408_663099.png vs ./tmp/screenshot_20260805_115409_708295.png)
+2026-08-05 11:54:11 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115410_704153.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:11 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115409_708295.png vs ./tmp/screenshot_20260805_115410_704153.png)
+2026-08-05 11:54:12 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115411_719434.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:12 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115410_704153.png vs ./tmp/screenshot_20260805_115411_719434.png)
+2026-08-05 11:54:13 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115412_713702.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:13 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115411_719434.png vs ./tmp/screenshot_20260805_115412_713702.png)
+2026-08-05 11:54:14 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115413_797937.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:14 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115412_713702.png vs ./tmp/screenshot_20260805_115413_797937.png)
+2026-08-05 11:54:15 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115414_809965.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:15 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115413_797937.png vs ./tmp/screenshot_20260805_115414_809965.png)
+2026-08-05 11:54:16 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115415_812236.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:16 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115414_809965.png vs ./tmp/screenshot_20260805_115415_812236.png)
+2026-08-05 11:54:17 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115416_809735.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:17 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115415_812236.png vs ./tmp/screenshot_20260805_115416_809735.png)
+2026-08-05 11:54:18 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115417_854873.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:18 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115416_809735.png vs ./tmp/screenshot_20260805_115417_854873.png)
+2026-08-05 11:54:19 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115418_848154.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:19 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115417_854873.png vs ./tmp/screenshot_20260805_115418_848154.png)
+2026-08-05 11:54:20 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115419_861443.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:20 | DEBUG   | detector | SSIM score=0.9982 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115418_848154.png vs ./tmp/screenshot_20260805_115419_861443.png)
+2026-08-05 11:54:21 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115421_132023.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:21 | DEBUG   | detector | SSIM score=0.7831 threshold=0.05 has_change=True (./tmp/screenshot_20260805_115419_861443.png vs ./tmp/screenshot_20260805_115421_132023.png)
+2026-08-05 11:54:21 | INFO    | detector | 检测到题目变化: score=0.7831 < 0.95
+2026-08-05 11:54:22 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115421_954218.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:22 | DEBUG   | PIL.PngImagePlugin | STREAM b'IHDR' 16 13
+2026-08-05 11:54:22 | DEBUG   | PIL.PngImagePlugin | STREAM b'iCCP' 41 2737
+2026-08-05 11:54:22 | DEBUG   | PIL.PngImagePlugin | iCCP profile name b'ICC Profile'
+2026-08-05 11:54:22 | DEBUG   | PIL.PngImagePlugin | Compression method 0
+2026-08-05 11:54:22 | DEBUG   | PIL.PngImagePlugin | STREAM b'eXIf' 2790 86
+2026-08-05 11:54:22 | DEBUG   | PIL.PngImagePlugin | STREAM b'iTXt' 2888 470
+2026-08-05 11:54:22 | DEBUG   | PIL.PngImagePlugin | STREAM b'iDOT' 3370 28
+2026-08-05 11:54:22 | DEBUG   | PIL.PngImagePlugin | b'iDOT' 3370 28 (unknown)
+2026-08-05 11:54:22 | DEBUG   | PIL.PngImagePlugin | STREAM b'IDAT' 3410 16384
+2026-08-05 11:54:22 | INFO    | ai_analyzer | 调用 AI 模型: model=step-3.7-flash, max_tokens=2048, enable_thinking=False, reasoning_effort=low, 题目长度=38
+2026-08-05 11:54:22 | DEBUG   | openai._base_client | Request options: {'method': 'post', 'url': '/chat/completions', 'timeout': 30, 'files': None, 'idempotency_key': 'stainless-python-retry-cff34caf-8dfc-4ffc-acfe-a27f2c9a0826', 'security': {'bearer_auth': True}, 'content': None, 'json_data': {'messages': [{'role': 'system', 'content': '你是一个专业的答题助手，擅长分析选择题并给出准确答案。'}, {'role': 'user', 'content': '你是一个专业的答题助手。请分析以下单选题并给出答案。\n\n题目内容：\n下列债务中,属于长期负债的是()\nA应付债券\nB应付账款\n应交税金\n应付工资\n\n请按以下格式返回（不要添加其他内容）：\n答案：[选项字母，如 D 或 AB]\n解析：[选项内容，如：土地使用权属于无形资产]'}], 'model': 'step-3.7-flash', 'max_tokens': 2048, 'temperature': 0.3}, 'extra_json': {'enable_thinking': False, 'reasoning_effort': 'low'}}
+2026-08-05 11:54:22 | DEBUG   | openai._base_client | Sending HTTP Request: POST https://api.stepfun.com/v1/chat/completions
+2026-08-05 11:54:22 | DEBUG   | httpcore.connection | connect_tcp.started host='api.stepfun.com' port=443 local_address=None timeout=30 socket_options=None
+2026-08-05 11:54:23 | DEBUG   | httpcore.connection | connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x13f92b110>
+2026-08-05 11:54:23 | DEBUG   | httpcore.connection | start_tls.started ssl_context=<ssl.SSLContext object at 0x13d2668d0> server_hostname='api.stepfun.com' timeout=30
+2026-08-05 11:54:23 | DEBUG   | httpcore.connection | start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x13ecb3a80>
+2026-08-05 11:54:23 | DEBUG   | httpcore.http11 | send_request_headers.started request=<Request [b'POST']>
+2026-08-05 11:54:23 | DEBUG   | httpcore.http11 | send_request_headers.complete
+2026-08-05 11:54:23 | DEBUG   | httpcore.http11 | send_request_body.started request=<Request [b'POST']>
+2026-08-05 11:54:23 | DEBUG   | httpcore.http11 | send_request_body.complete
+2026-08-05 11:54:23 | DEBUG   | httpcore.http11 | receive_response_headers.started request=<Request [b'POST']>
+2026-08-05 11:54:23 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115423_377674.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:23 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115421_954218.png vs ./tmp/screenshot_20260805_115423_377674.png)
+2026-08-05 11:54:24 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115424_370129.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:24 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115423_377674.png vs ./tmp/screenshot_20260805_115424_370129.png)
+2026-08-05 11:54:25 | DEBUG   | httpcore.http11 | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Server', b'nginx'), (b'Date', b'Wed, 05 Aug 2026 03:54:25 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Set-Cookie', b'INGRESSCOOKIE=1785902064.14.9855.961748|41608414b127efd3b4a05908e72b4160; Path=/; HttpOnly'), (b'Cache-Control', b'no-cache'), (b'X-Trace-Id', b'66d8d03ec184a4a5bdb5b53862a2e7b1'), (b'X-Upstream-Latency', b'0'), (b'X-Proxy-Latency', b'11194'), (b'X-Router-Id', b'path:/v1/chat/'), (b'Access-Control-Allow-Origin', b'*'), (b'Access-Control-Allow-Credentials', b'true'), (b'Access-Control-Allow-Methods', b'GET, PUT, POST, DELETE, PATCH, OPTIONS'), (b'Access-Control-Allow-Headers', b'Content-Type, Origin, X-CSRF-Token, Authorization, AccessToken, Token, Range, x-stainless-os, X-Stainless-Arch, X-Stainless-Lang, X-Stainless-OS, X-Stainless-Package-Version, X-Stainless-Read-Timeout, X-Stainless-Retry-Count, X-Stainless-Runtime, X-Stainless-Runtime-Version, X-Stainless-Timeout, X-Stainless-Async, X-Stainless-OS-Version, X-Stainless-MCP, x-step-excel-agent-sub-user, X-Trace-Id'), (b'Access-Control-Expose-Headers', b'Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers, X-Trace-Id'), (b'Access-Control-Max-Age', b'86400'), (b'server-timing', b'inner; dur=1955')])
+2026-08-05 11:54:25 | INFO    | httpx | HTTP Request: POST https://api.stepfun.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-05 11:54:25 | DEBUG   | httpcore.http11 | receive_response_body.started request=<Request [b'POST']>
+2026-08-05 11:54:25 | DEBUG   | httpcore.http11 | receive_response_body.complete
+2026-08-05 11:54:25 | DEBUG   | httpcore.http11 | response_closed.started
+2026-08-05 11:54:25 | DEBUG   | httpcore.http11 | response_closed.complete
+2026-08-05 11:54:25 | DEBUG   | openai._base_client | HTTP Response: POST https://api.stepfun.com/v1/chat/completions "200 OK" Headers({'server': 'nginx', 'date': 'Wed, 05 Aug 2026 03:54:25 GMT', 'content-type': 'application/json; charset=utf-8', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'set-cookie': 'INGRESSCOOKIE=1785902064.14.9855.961748|41608414b127efd3b4a05908e72b4160; Path=/; HttpOnly', 'cache-control': 'no-cache', 'x-trace-id': '66d8d03ec184a4a5bdb5b53862a2e7b1', 'x-upstream-latency': '0', 'x-proxy-latency': '11194', 'x-router-id': 'path:/v1/chat/', 'access-control-allow-origin': '*', 'access-control-allow-credentials': 'true', 'access-control-allow-methods': 'GET, PUT, POST, DELETE, PATCH, OPTIONS', 'access-control-allow-headers': 'Content-Type, Origin, X-CSRF-Token, Authorization, AccessToken, Token, Range, x-stainless-os, X-Stainless-Arch, X-Stainless-Lang, X-Stainless-OS, X-Stainless-Package-Version, X-Stainless-Read-Timeout, X-Stainless-Retry-Count, X-Stainless-Runtime, X-Stainless-Runtime-Version, X-Stainless-Timeout, X-Stainless-Async, X-Stainless-OS-Version, X-Stainless-MCP, x-step-excel-agent-sub-user, X-Trace-Id', 'access-control-expose-headers': 'Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers, X-Trace-Id', 'access-control-max-age': '86400', 'server-timing': 'inner; dur=1955'})
+2026-08-05 11:54:25 | DEBUG   | openai._base_client | request_id: None
+2026-08-05 11:54:25 | DEBUG   | ai_analyzer | AI 完成: finish_reason=stop, completion_tokens=217, max_tokens=2048
+2026-08-05 11:54:25 | INFO    | ai_analyzer | AI 响应: 答案：A
+解析：应付债券的偿还期限通常超过1年，属于长期负债；应付账款、应交税金、应付工资的偿还期限均在1年以内，属于流动负债。
+2026-08-05 11:54:25 | INFO    | auto_clicker | 检测到 0 个选项: []
+2026-08-05 11:54:25 | WARNING | gui | 未检测到选项位置，跳过自动点击
+2026-08-05 11:54:25 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115425_358487.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:25 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115424_370129.png vs ./tmp/screenshot_20260805_115425_358487.png)
+2026-08-05 11:54:26 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115426_354701.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:26 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115425_358487.png vs ./tmp/screenshot_20260805_115426_354701.png)
+2026-08-05 11:54:27 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115427_360040.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:27 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115426_354701.png vs ./tmp/screenshot_20260805_115427_360040.png)
+2026-08-05 11:54:28 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115428_411925.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:29 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115427_360040.png vs ./tmp/screenshot_20260805_115428_411925.png)
+2026-08-05 11:54:29 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115429_565775.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:30 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115428_411925.png vs ./tmp/screenshot_20260805_115429_565775.png)
+2026-08-05 11:54:30 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115430_568073.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:31 | DEBUG   | detector | SSIM score=0.9982 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115429_565775.png vs ./tmp/screenshot_20260805_115430_568073.png)
+2026-08-05 11:54:31 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115431_696285.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:32 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115430_568073.png vs ./tmp/screenshot_20260805_115431_696285.png)
+2026-08-05 11:54:32 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115432_660386.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:33 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115431_696285.png vs ./tmp/screenshot_20260805_115432_660386.png)
+2026-08-05 11:54:34 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115433_801269.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:34 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115432_660386.png vs ./tmp/screenshot_20260805_115433_801269.png)
+2026-08-05 11:54:35 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115434_781758.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:35 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115433_801269.png vs ./tmp/screenshot_20260805_115434_781758.png)
+2026-08-05 11:54:36 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115435_812222.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:36 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115434_781758.png vs ./tmp/screenshot_20260805_115435_812222.png)
+2026-08-05 11:54:37 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115436_836857.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:37 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115435_812222.png vs ./tmp/screenshot_20260805_115436_836857.png)
+2026-08-05 11:54:38 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115438_358685.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:39 | DEBUG   | detector | SSIM score=0.9992 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115436_836857.png vs ./tmp/screenshot_20260805_115438_358685.png)
+2026-08-05 11:54:39 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115439_524122.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:40 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115438_358685.png vs ./tmp/screenshot_20260805_115439_524122.png)
+2026-08-05 11:54:40 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115440_511407.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:41 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115439_524122.png vs ./tmp/screenshot_20260805_115440_511407.png)
+2026-08-05 11:54:41 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115441_517004.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:42 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115440_511407.png vs ./tmp/screenshot_20260805_115441_517004.png)
+2026-08-05 11:54:42 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115442_513621.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:43 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115441_517004.png vs ./tmp/screenshot_20260805_115442_513621.png)
+2026-08-05 11:54:44 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115443_623559.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:44 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115442_513621.png vs ./tmp/screenshot_20260805_115443_623559.png)
+2026-08-05 11:54:45 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115444_730659.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:45 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115443_623559.png vs ./tmp/screenshot_20260805_115444_730659.png)
+2026-08-05 11:54:46 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115445_805961.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:46 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115444_730659.png vs ./tmp/screenshot_20260805_115445_805961.png)
+2026-08-05 11:54:47 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115447_268185.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:47 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115445_805961.png vs ./tmp/screenshot_20260805_115447_268185.png)
+2026-08-05 11:54:48 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115448_254854.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:48 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115447_268185.png vs ./tmp/screenshot_20260805_115448_254854.png)
+2026-08-05 11:54:49 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115449_391753.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:49 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115448_254854.png vs ./tmp/screenshot_20260805_115449_391753.png)
+2026-08-05 11:54:50 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115450_380132.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:50 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115449_391753.png vs ./tmp/screenshot_20260805_115450_380132.png)
+2026-08-05 11:54:51 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115451_349932.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:51 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115450_380132.png vs ./tmp/screenshot_20260805_115451_349932.png)
+2026-08-05 11:54:53 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115452_394637.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:53 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115451_349932.png vs ./tmp/screenshot_20260805_115452_394637.png)
+2026-08-05 11:54:54 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115453_921582.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:54 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115452_394637.png vs ./tmp/screenshot_20260805_115453_921582.png)
+2026-08-05 11:54:55 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115454_913441.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:55 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115453_921582.png vs ./tmp/screenshot_20260805_115454_913441.png)
+2026-08-05 11:54:56 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115455_978207.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:57 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115454_913441.png vs ./tmp/screenshot_20260805_115455_978207.png)
+2026-08-05 11:54:57 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115457_660761.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:58 | DEBUG   | detector | SSIM score=0.9992 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115455_978207.png vs ./tmp/screenshot_20260805_115457_660761.png)
+2026-08-05 11:54:59 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_115458_678600.png (region=[24, 175, 448, 454])
+2026-08-05 11:54:59 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_115457_660761.png vs ./tmp/screenshot_20260805_115458_678600.png)
+2026-08-05 11:54:59 | DEBUG   | httpcore.connection | close.started
+2026-08-05 11:54:59 | DEBUG   | httpcore.connection | close.complete
+2026-08-05 11:54:59 | DEBUG   | httpcore.connection | close.started
+2026-08-05 11:54:59 | DEBUG   | httpcore.connection | close.complete

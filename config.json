@@ -24,7 +24,7 @@
         "vision": false
     },
     "auto_click": {
-        "enabled": false,
+        "enabled": true,
         "delay": 0
     }
 }
