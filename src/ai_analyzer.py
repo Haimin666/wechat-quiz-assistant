@@ -43,6 +43,7 @@ def analyze_question(
     base_url="https://api.stepfun.com/v1",
     max_tokens=2048,
     enable_thinking=False,
+    reasoning_effort="low",
 ):
     """
     分析题目并给出答案
@@ -53,12 +54,9 @@ def analyze_question(
         api_key: API密钥
         model: 使用的模型
         base_url: API地址
-        max_tokens: 最大生成 token 数。step-3.7-flash 为推理模型，
-            会先在 reasoning_content 中消耗数百 token 再产出最终答案，
-            因此需 ≥ 2048 才能避免 finish_reason=length 导致 content 为空。
-        enable_thinking: 是否开启推理（思考）模式。step-3.7-flash 默认推理，
-            开启时偶发在难题上无限循环导致 content 为空；**默认关闭以保证稳定给出答案**。
-            需要更深思考可在 config.json 设 ``ai.enable_thinking: true`` 并调大 max_tokens。
+        max_tokens: 最大生成 token 数
+        enable_thinking: 是否开启推理模式
+        reasoning_effort: 推理强度 ("low"/"medium"/"high")，默认 low
 
     Returns:
         {
@@ -96,6 +94,7 @@ def analyze_question(
         ],
         max_tokens=max_tokens,
         temperature=0.3,
+        reasoning_effort=reasoning_effort,
         extra_body={"enable_thinking": enable_thinking},
         timeout=30,
     )
@@ -156,6 +155,7 @@ def analyze_question_with_image(
     base_url="https://api.stepfun.com/v1",
     max_tokens=2048,
     enable_thinking=False,
+    reasoning_effort="low",
 ):
     """
     直接用图片分析题目（跳过OCR）
@@ -168,6 +168,7 @@ def analyze_question_with_image(
         base_url: API地址
         max_tokens: 最大生成 token 数
         enable_thinking: 是否开启推理模式
+        reasoning_effort: 推理强度 ("low"/"medium"/"high")，默认 low
 
     Returns:
         {
@@ -211,6 +212,7 @@ def analyze_question_with_image(
         ],
         max_tokens=max_tokens,
         temperature=0.3,
+        reasoning_effort=reasoning_effort,
         extra_body={"enable_thinking": enable_thinking},
         timeout=30,
     )

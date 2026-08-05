@@ -7,7 +7,7 @@ from datetime import datetime
 from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
     QLabel, QPushButton, QTextEdit, QGroupBox, QMessageBox, QSplitter,
-    QComboBox
+    QComboBox, QLineEdit, QDialog, QDialogButtonBox, QFormLayout
 )
 from PyQt5.QtCore import Qt, QThread, pyqtSignal, QRect, QPoint, QTimer
 from PyQt5.QtGui import QPixmap, QPainter, QPen, QColor, QFont, QMouseEvent
@@ -149,7 +149,7 @@ class AIWorker(QThread):
     finished = pyqtSignal(dict)
     error = pyqtSignal(str)
 
-    def __init__(self, question_text, api_key, model, base_url, max_tokens=2048, enable_thinking=False):
+    def __init__(self, question_text, api_key, model, base_url, max_tokens=2048, enable_thinking=False, reasoning_effort="low"):
         super().__init__()
         self.question_text = question_text
         self.api_key = api_key
@@ -157,6 +157,7 @@ class AIWorker(QThread):
         self.base_url = base_url
         self.max_tokens = max_tokens
         self.enable_thinking = enable_thinking
+        self.reasoning_effort = reasoning_effort
         self._cancelled = False
 
     def cancel(self):
@@ -174,6 +175,7 @@ class AIWorker(QThread):
                 base_url=self.base_url,
                 max_tokens=self.max_tokens,
                 enable_thinking=self.enable_thinking,
+                reasoning_effort=self.reasoning_effort,
             )
             if not self._cancelled:
                 self.finished.emit(result)
@@ -188,7 +190,7 @@ class VisionAIWorker(QThread):
     finished = pyqtSignal(dict)
     error = pyqtSignal(str)
 
-    def __init__(self, image_path, api_key, model, base_url, max_tokens=2048, enable_thinking=False):
+    def __init__(self, image_path, api_key, model, base_url, max_tokens=2048, enable_thinking=False, reasoning_effort="low"):
         super().__init__()
         self.image_path = image_path
         self.api_key = api_key
@@ -196,6 +198,7 @@ class VisionAIWorker(QThread):
         self.base_url = base_url
         self.max_tokens = max_tokens
         self.enable_thinking = enable_thinking
+        self.reasoning_effort = reasoning_effort
         self._cancelled = False
 
     def cancel(self):
@@ -213,6 +216,7 @@ class VisionAIWorker(QThread):
                 base_url=self.base_url,
                 max_tokens=self.max_tokens,
                 enable_thinking=self.enable_thinking,
+                reasoning_effort=self.reasoning_effort,
             )
             if not self._cancelled:
                 self.finished.emit(result)
@@ -323,6 +327,63 @@ class ListenThread(QThread):
     
     def stop(self):
         self.is_running = False
+
+
+class SettingsDialog(QDialog):
+    """API设置对话框"""
+    def __init__(self, config_path, parent=None):
+        super().__init__(parent)
+        self.config_path = config_path
+        self.setWindowTitle("API 设置")
+        self.setMinimumWidth(400)
+        
+        layout = QFormLayout(self)
+        
+        self.url_edit = QLineEdit()
+        self.url_edit.setPlaceholderText("https://api.stepfun.com/v1")
+        layout.addRow("API URL:", self.url_edit)
+        
+        self.key_edit = QLineEdit()
+        self.key_edit.setPlaceholderText("输入 API Key")
+        self.key_edit.setEchoMode(QLineEdit.Password)
+        layout.addRow("API Key:", self.key_edit)
+        
+        self.model_edit = QLineEdit()
+        self.model_edit.setPlaceholderText("step-3.7-flash")
+        layout.addRow("模型:", self.model_edit)
+        
+        buttons = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
+        buttons.accepted.connect(self.save_and_accept)
+        buttons.rejected.connect(self.reject)
+        layout.addRow(buttons)
+        
+        self.load_config()
+    
+    def load_config(self):
+        try:
+            with open(self.config_path, "r", encoding="utf-8") as f:
+                config = json.load(f)
+            ai = config.get("ai", {})
+            self.url_edit.setText(ai.get("base_url", ""))
+            self.key_edit.setText(ai.get("api_key", ""))
+            self.model_edit.setText(ai.get("model", ""))
+        except Exception:
+            pass
+    
+    def save_and_accept(self):
+        try:
+            with open(self.config_path, "r", encoding="utf-8") as f:
+                config = json.load(f)
+            if "ai" not in config:
+                config["ai"] = {}
+            config["ai"]["base_url"] = self.url_edit.text().strip()
+            config["ai"]["api_key"] = self.key_edit.text().strip()
+            config["ai"]["model"] = self.model_edit.text().strip()
+            with open(self.config_path, "w", encoding="utf-8") as f:
+                json.dump(config, f, ensure_ascii=False, indent=4)
+            self.accept()
+        except Exception as e:
+            QMessageBox.warning(self, "错误", f"保存配置失败: {e}")
 
 
 class MainWindow(QMainWindow):
@@ -447,6 +508,24 @@ class MainWindow(QMainWindow):
         """)
         self.mode_combo.currentIndexChanged.connect(self.on_mode_changed)
         toolbar.addWidget(self.mode_combo)
+
+        # 设置按钮
+        self.settings_btn = QPushButton("⚙ 设置")
+        self.settings_btn.setFixedHeight(36)
+        self.settings_btn.clicked.connect(self.open_settings)
+        self.settings_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #607D8B;
+                color: white;
+                border: none;
+                padding: 8px 12px;
+                border-radius: 6px;
+                font-size: 12px;
+                font-weight: bold;
+            }
+            QPushButton:hover { background-color: #455A64; }
+        """)
+        toolbar.addWidget(self.settings_btn)
         
         main_layout.addLayout(toolbar)
         
@@ -555,6 +634,13 @@ class MainWindow(QMainWindow):
                 json.dump(config, f, ensure_ascii=False, indent=4)
         except Exception:
             logger.exception("保存配置失败: %s", self.config_path)
+
+    def open_settings(self):
+        """打开API设置对话框"""
+        dialog = SettingsDialog(self.config_path, self)
+        if dialog.exec_():
+            self.statusBar().showMessage("API设置已保存")
+            logger.info("API设置已更新")
     
     def select_region(self):
         """启动全屏区域选择器：依次点击左上角、右下角。
@@ -790,10 +876,12 @@ class MainWindow(QMainWindow):
             base_url = config.get("ai", {}).get("base_url", "https://api.stepfun.com/v1")
             max_tokens = config.get("ai", {}).get("max_tokens", 2048)
             enable_thinking = config.get("ai", {}).get("enable_thinking", False)
+            reasoning_effort = config.get("ai", {}).get("reasoning_effort", "low")
 
             self.ai_worker = AIWorker(
                 question_text, api_key, model, base_url,
                 max_tokens=max_tokens, enable_thinking=enable_thinking,
+                reasoning_effort=reasoning_effort,
             )
             self.ai_worker.finished.connect(self.on_ai_done)
             self.ai_worker.error.connect(self.on_ai_error)
@@ -819,10 +907,12 @@ class MainWindow(QMainWindow):
             base_url = config.get("ai", {}).get("base_url", "https://api.stepfun.com/v1")
             max_tokens = config.get("ai", {}).get("max_tokens", 2048)
             enable_thinking = config.get("ai", {}).get("enable_thinking", False)
+            reasoning_effort = config.get("ai", {}).get("reasoning_effort", "low")
 
             self.ai_worker = VisionAIWorker(
                 image_path, api_key, model, base_url,
                 max_tokens=max_tokens, enable_thinking=enable_thinking,
+                reasoning_effort=reasoning_effort,
             )
             self.ai_worker.finished.connect(self.on_ai_done)
             self.ai_worker.error.connect(self.on_ai_error)
