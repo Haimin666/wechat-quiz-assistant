@@ -3948,3 +3948,50 @@
 2026-08-05 09:23:53 | DEBUG   | PIL.PngImagePlugin | b'iDOT' 3372 28 (unknown)
 2026-08-05 09:23:53 | DEBUG   | PIL.PngImagePlugin | STREAM b'IDAT' 3412 16384
 2026-08-05 09:23:57 | DEBUG   | ocr | OCR 识别 78 行: ./tmp/screenshot_20260805_092352_810423.png
+2026-08-05 11:50:23 | ERROR   | gui | 加载配置失败: /Users/lbc/Public/www/wechat-quiz-assistant/config.json
+Traceback (most recent call last):
+  File "/Users/lbc/Public/www/wechat-quiz-assistant/src/gui.py", line 649, in load_config
+    config = json.load(f)
+  File "/Users/lbc/miniconda3/lib/python3.13/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/Users/lbc/miniconda3/lib/python3.13/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/lbc/miniconda3/lib/python3.13/json/decoder.py", line 348, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 31 column 1 (char 651)
+2026-08-05 11:50:35 | INFO    | gui | 自动点击: 开启
+2026-08-05 11:50:35 | ERROR   | gui | 保存自动点击配置失败
+Traceback (most recent call last):
+  File "/Users/lbc/Public/www/wechat-quiz-assistant/src/gui.py", line 791, in on_auto_click_toggled
+    config = json.load(f)
+  File "/Users/lbc/miniconda3/lib/python3.13/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/Users/lbc/miniconda3/lib/python3.13/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/lbc/miniconda3/lib/python3.13/json/decoder.py", line 348, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 31 column 1 (char 651)
+2026-08-05 11:50:36 | INFO    | gui | 自动点击: 关闭
+2026-08-05 11:50:36 | ERROR   | gui | 保存自动点击配置失败
+Traceback (most recent call last):
+  File "/Users/lbc/Public/www/wechat-quiz-assistant/src/gui.py", line 791, in on_auto_click_toggled
+    config = json.load(f)
+  File "/Users/lbc/miniconda3/lib/python3.13/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/Users/lbc/miniconda3/lib/python3.13/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/lbc/miniconda3/lib/python3.13/json/decoder.py", line 348, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 31 column 1 (char 651)
