@@ -4,10 +4,10 @@
         "interval": 0.5,
         "change_threshold": 0.05,
         "screenshot_region": [
-            560,
-            99,
-            728,
-            526
+            24,
+            175,
+            448,
+            454
         ]
     },
     "ai": {
@@ -22,5 +22,10 @@
     },
     "mode": {
         "vision": false
+    },
+    "auto_click": {
+        "enabled": false,
+        "delay": 0
     }
+}
 }

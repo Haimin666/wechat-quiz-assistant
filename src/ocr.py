@@ -44,6 +44,32 @@ def image_to_text(image_path):
         raise RuntimeError(f"OCR识别失败: {image_path}")
 
 
+def image_to_text_with_boxes(image_path):
+    """识别图片文字，返回文本和每个文字块的边界框。
+
+    Returns:
+        (text, boxes) 其中 boxes 为 [{"text": str, "box": [[x1,y1],[x2,y2],[x3,y3],[x4,y4]], "score": float}]
+    """
+    try:
+        ocr = get_ocr()
+        result, _ = ocr(image_path)
+
+        if not result or not isinstance(result, (list, tuple)):
+            return "", []
+
+        boxes = []
+        for item in result:
+            if len(item) >= 3:
+                box, text, score = item[0], item[1], item[2]
+                boxes.append({"text": text, "box": box, "score": score})
+
+        text = "\n".join([b["text"] for b in boxes])
+        return text, boxes
+    except Exception:
+        logger.exception("OCR 识别失败: %s", image_path)
+        return "", []
+
+
 if __name__ == "__main__":
     import sys
     if len(sys.argv) == 2:

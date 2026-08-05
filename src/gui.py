@@ -7,7 +7,8 @@ from datetime import datetime
 from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
     QLabel, QPushButton, QTextEdit, QGroupBox, QMessageBox, QSplitter,
-    QComboBox, QLineEdit, QDialog, QDialogButtonBox, QFormLayout
+    QComboBox, QLineEdit, QDialog, QDialogButtonBox, QFormLayout,
+    QCheckBox, QDoubleSpinBox
 )
 from PyQt5.QtCore import Qt, QThread, pyqtSignal, QRect, QPoint, QTimer
 from PyQt5.QtGui import QPixmap, QPainter, QPen, QColor, QFont, QMouseEvent
@@ -17,8 +18,9 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from logger import get_logger
 from screenshot import capture_screen
 from detector import detect_change
-from ocr import image_to_text
+from ocr import image_to_text, image_to_text_with_boxes
 from ai_analyzer import analyze_question, analyze_question_with_image
+from auto_clicker import OptionDetector, AutoClicker
 from cleanup import cleanup_screenshots
 
 logger = get_logger("gui")
@@ -228,7 +230,7 @@ class VisionAIWorker(QThread):
 
 class ListenThread(QThread):
     screenshot_signal = pyqtSignal(str)
-    ocr_signal = pyqtSignal(str)
+    ocr_signal = pyqtSignal(str, list)  # (text, boxes)
     vision_signal = pyqtSignal(str)  # 新增：视觉模式信号，传递图片路径
     status_signal = pyqtSignal(str)
     change_signal = pyqtSignal()
@@ -285,9 +287,9 @@ class ListenThread(QThread):
                         self.vision_signal.emit(current_image)
                     else:
                         self.status_signal.emit("OCR识别中...")
-                        question_text = image_to_text(current_image)
+                        question_text, boxes = image_to_text_with_boxes(current_image)
                         if question_text.strip():
-                            self.ocr_signal.emit(question_text)
+                            self.ocr_signal.emit(question_text, boxes)
                         else:
                             self.status_signal.emit("未识别到文字")
                 elif self.last_image is not None:
@@ -309,9 +311,9 @@ class ListenThread(QThread):
                             self.vision_signal.emit(stable_image)
                         else:
                             self.status_signal.emit("OCR识别中...")
-                            question_text = image_to_text(stable_image)
+                            question_text, boxes = image_to_text_with_boxes(stable_image)
                             if question_text.strip():
-                                self.ocr_signal.emit(question_text)
+                                self.ocr_signal.emit(question_text, boxes)
                             else:
                                 self.status_signal.emit("未识别到文字")
 
@@ -412,6 +414,9 @@ class MainWindow(QMainWindow):
         self.listen_thread = None
         self._selector = None
         self._selector_timer = None
+        self.auto_click_enabled = False
+        self.click_delay = 0.0
+        self.last_ocr_boxes = []  # 存储最近一次OCR的坐标
         
         self.init_ui()
         self.load_config()
@@ -542,6 +547,24 @@ class MainWindow(QMainWindow):
             QPushButton:hover { background-color: #455A64; }
         """)
         toolbar.addWidget(self.settings_btn)
+
+        # 自动点击开关
+        self.auto_click_check = QCheckBox("自动点击")
+        self.auto_click_check.setChecked(False)
+        self.auto_click_check.setStyleSheet("color: #333; font-size: 12px; font-weight: bold; padding: 0 5px;")
+        self.auto_click_check.toggled.connect(self.on_auto_click_toggled)
+        toolbar.addWidget(self.auto_click_check)
+
+        # 点击延迟
+        self.click_delay_spin = QDoubleSpinBox()
+        self.click_delay_spin.setRange(0, 5)
+        self.click_delay_spin.setValue(0)
+        self.click_delay_spin.setSuffix("s")
+        self.click_delay_spin.setFixedWidth(65)
+        self.click_delay_spin.setFixedHeight(30)
+        self.click_delay_spin.setToolTip("点击延迟（秒）")
+        self.click_delay_spin.valueChanged.connect(self.on_click_delay_changed)
+        toolbar.addWidget(self.click_delay_spin)
         
         main_layout.addLayout(toolbar)
         
@@ -636,6 +659,12 @@ class MainWindow(QMainWindow):
             # 加载视觉模式设置
             vision_mode = config.get("mode", {}).get("vision", False)
             self.mode_combo.setCurrentIndex(1 if vision_mode else 0)
+            # 加载自动点击设置
+            auto_click = config.get("auto_click", {})
+            self.auto_click_enabled = auto_click.get("enabled", False)
+            self.click_delay = auto_click.get("delay", 0.0)
+            self.auto_click_check.setChecked(self.auto_click_enabled)
+            self.click_delay_spin.setValue(self.click_delay)
         except Exception:
             logger.exception("加载配置失败: %s", self.config_path)
     
@@ -748,6 +777,42 @@ class MainWindow(QMainWindow):
         # 通知预览线程
         if self.listen_thread and self.listen_thread.isRunning():
             self.listen_thread.set_vision_mode(vision_enabled)
+
+    def on_auto_click_toggled(self, checked):
+        """自动点击开关"""
+        self.auto_click_enabled = checked
+        status = "开启" if checked else "关闭"
+        self.statusBar().showMessage(f"自动点击已{status}")
+        logger.info("自动点击: %s", status)
+
+        # 保存配置
+        try:
+            with open(self.config_path, "r", encoding="utf-8") as f:
+                config = json.load(f)
+            if "auto_click" not in config:
+                config["auto_click"] = {}
+            config["auto_click"]["enabled"] = checked
+            with open(self.config_path, "w", encoding="utf-8") as f:
+                json.dump(config, f, ensure_ascii=False, indent=4)
+        except Exception:
+            logger.exception("保存自动点击配置失败")
+
+    def on_click_delay_changed(self, value):
+        """点击延迟变化"""
+        self.click_delay = value
+        logger.info("点击延迟: %.1fs", value)
+
+        # 保存配置
+        try:
+            with open(self.config_path, "r", encoding="utf-8") as f:
+                config = json.load(f)
+            if "auto_click" not in config:
+                config["auto_click"] = {}
+            config["auto_click"]["delay"] = value
+            with open(self.config_path, "w", encoding="utf-8") as f:
+                json.dump(config, f, ensure_ascii=False, indent=4)
+        except Exception:
+            logger.exception("保存点击延迟配置失败")
 
     def _ensure_preview_thread(self):
         """确保预览线程在跑；若已在跑则原子更新区域（不重启，避免竞态）。"""
@@ -863,9 +928,10 @@ class MainWindow(QMainWindow):
             self.answer_label.setText("未开始答题")
             self.explanation_text.clear()
 
-    def on_ocr(self, text):
+    def on_ocr(self, text, boxes):
         # 始终显示 OCR 文本（预览）；仅在开始后才调 AI 答题
         self.ocr_text.setText(text)
+        self.last_ocr_boxes = boxes  # 保存坐标用于自动点击
         if self.is_running:
             self.start_ai(text)
         else:
@@ -946,8 +1012,36 @@ class MainWindow(QMainWindow):
         self.statusBar().showMessage(msg)
     
     def on_ai_done(self, result):
-        self.answer_label.setText(result.get("answer", ""))
+        answer = result.get("answer", "")
+        self.answer_label.setText(answer)
         self.explanation_text.setText(result.get("explanation", ""))
+
+        # 自动点击
+        if self.auto_click_enabled and answer and self.region and self.last_ocr_boxes:
+            if self.click_delay > 0:
+                QTimer.singleShot(int(self.click_delay * 1000), lambda: self._do_auto_click(answer))
+            else:
+                self._do_auto_click(answer)
+
+    def _do_auto_click(self, answer):
+        """执行自动点击"""
+        try:
+            options = OptionDetector.detect(self.last_ocr_boxes)
+            if not options:
+                logger.warning("未检测到选项位置，跳过自动点击")
+                self.statusBar().showMessage("未检测到选项位置")
+                return
+
+            clicker = AutoClicker(self.region)
+            clicked = clicker.click_answer(answer, options)
+            if clicked:
+                self.statusBar().showMessage(f"已点击: {'+'.join(clicked)}")
+                logger.info("自动点击完成: %s", clicked)
+            else:
+                self.statusBar().showMessage("点击失败")
+        except Exception:
+            logger.exception("自动点击异常")
+            self.statusBar().showMessage("点击异常，详见日志")
     
     def quit_app(self):
         self.is_running = False
