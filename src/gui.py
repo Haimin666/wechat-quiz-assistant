@@ -352,6 +352,14 @@ class SettingsDialog(QDialog):
         self.model_edit.setPlaceholderText("step-3.7-flash")
         layout.addRow("模型:", self.model_edit)
         
+        self.effort_combo = QComboBox()
+        self.effort_combo.addItem("")  # 空 = 使用模型默认
+        self.effort_combo.addItem("low")
+        self.effort_combo.addItem("medium")
+        self.effort_combo.addItem("high")
+        self.effort_combo.setToolTip("置空则使用模型默认推理强度")
+        layout.addRow("推理强度:", self.effort_combo)
+        
         buttons = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
         buttons.accepted.connect(self.save_and_accept)
         buttons.rejected.connect(self.reject)
@@ -367,6 +375,9 @@ class SettingsDialog(QDialog):
             self.url_edit.setText(ai.get("base_url", ""))
             self.key_edit.setText(ai.get("api_key", ""))
             self.model_edit.setText(ai.get("model", ""))
+            effort = ai.get("reasoning_effort", "")
+            idx = self.effort_combo.findText(effort)
+            self.effort_combo.setCurrentIndex(idx if idx >= 0 else 0)
         except Exception:
             pass
     
@@ -379,6 +390,11 @@ class SettingsDialog(QDialog):
             config["ai"]["base_url"] = self.url_edit.text().strip()
             config["ai"]["api_key"] = self.key_edit.text().strip()
             config["ai"]["model"] = self.model_edit.text().strip()
+            effort = self.effort_combo.currentText().strip()
+            if effort:
+                config["ai"]["reasoning_effort"] = effort
+            else:
+                config["ai"].pop("reasoning_effort", None)
             with open(self.config_path, "w", encoding="utf-8") as f:
                 json.dump(config, f, ensure_ascii=False, indent=4)
             self.accept()

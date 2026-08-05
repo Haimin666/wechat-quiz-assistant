@@ -83,8 +83,12 @@ def analyze_question(
 
     # 调用API（注意：日志中绝不打印 api_key）
     client = OpenAI(api_key=api_key, base_url=base_url)
-    logger.info("调用 AI 模型: model=%s, max_tokens=%s, enable_thinking=%s, 题目长度=%d",
-                model, max_tokens, enable_thinking, len(question_text))
+    logger.info("调用 AI 模型: model=%s, max_tokens=%s, enable_thinking=%s, reasoning_effort=%s, 题目长度=%d",
+                model, max_tokens, enable_thinking, reasoning_effort or "(默认)", len(question_text))
+
+    extra = {"enable_thinking": enable_thinking}
+    if reasoning_effort:
+        extra["reasoning_effort"] = reasoning_effort
 
     response = client.chat.completions.create(
         model=model,
@@ -94,8 +98,7 @@ def analyze_question(
         ],
         max_tokens=max_tokens,
         temperature=0.3,
-        reasoning_effort=reasoning_effort,
-        extra_body={"enable_thinking": enable_thinking},
+        extra_body=extra,
         timeout=30,
     )
 
@@ -198,8 +201,12 @@ def analyze_question_with_image(
 解析：[选项内容，如：土地使用权属于无形资产]"""
 
     client = OpenAI(api_key=api_key, base_url=base_url)
-    logger.info("调用 AI 视觉模型: model=%s, max_tokens=%s, image=%s",
-                model, max_tokens, image_path)
+    logger.info("调用 AI 视觉模型: model=%s, max_tokens=%s, reasoning_effort=%s, image=%s",
+                model, max_tokens, reasoning_effort or "(默认)", image_path)
+
+    extra = {"enable_thinking": enable_thinking}
+    if reasoning_effort:
+        extra["reasoning_effort"] = reasoning_effort
 
     response = client.chat.completions.create(
         model=model,
@@ -212,8 +219,7 @@ def analyze_question_with_image(
         ],
         max_tokens=max_tokens,
         temperature=0.3,
-        reasoning_effort=reasoning_effort,
-        extra_body={"enable_thinking": enable_thinking},
+        extra_body=extra,
         timeout=30,
     )
 

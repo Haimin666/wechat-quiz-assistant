@@ -3661,3 +3661,35 @@
 2026-08-04 15:50:27 | DEBUG   | httpcore.connection | close.complete
 2026-08-04 15:50:27 | DEBUG   | httpcore.connection | close.started
 2026-08-04 15:50:27 | DEBUG   | httpcore.connection | close.complete
+2026-08-05 09:09:04 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_090904_013419.png (region=[24, 175, 448, 454])
+2026-08-05 09:09:04 | INFO    | cleanup | 清理旧截图: 删除 71 个，保留 20 个
+2026-08-05 09:09:04 | INFO    | gui | 预览线程已启动 region=[24, 175, 448, 454], vision=False
+2026-08-05 09:09:05 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_090904_878869.png (region=[24, 175, 448, 454])
+2026-08-05 09:09:05 | INFO    | ocr | 初始化 RapidOCR 引擎
+2026-08-05 09:09:06 | DEBUG   | PIL.Image | Importing PngImagePlugin
+2026-08-05 09:09:06 | DEBUG   | PIL.PngImagePlugin | STREAM b'IHDR' 16 13
+2026-08-05 09:09:06 | DEBUG   | PIL.PngImagePlugin | STREAM b'iCCP' 41 2737
+2026-08-05 09:09:06 | DEBUG   | PIL.PngImagePlugin | iCCP profile name b'ICC Profile'
+2026-08-05 09:09:06 | DEBUG   | PIL.PngImagePlugin | Compression method 0
+2026-08-05 09:09:06 | DEBUG   | PIL.PngImagePlugin | STREAM b'eXIf' 2790 86
+2026-08-05 09:09:06 | DEBUG   | PIL.PngImagePlugin | STREAM b'iTXt' 2888 470
+2026-08-05 09:09:06 | DEBUG   | PIL.PngImagePlugin | STREAM b'iDOT' 3370 28
+2026-08-05 09:09:06 | DEBUG   | PIL.PngImagePlugin | b'iDOT' 3370 28 (unknown)
+2026-08-05 09:09:06 | DEBUG   | PIL.PngImagePlugin | STREAM b'IDAT' 3410 16384
+2026-08-05 09:09:09 | DEBUG   | ocr | OCR 识别 34 行: ./tmp/screenshot_20260805_090904_878869.png
+2026-08-05 09:09:10 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_090910_179850.png (region=[24, 175, 448, 454])
+2026-08-05 09:09:10 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_090904_878869.png vs ./tmp/screenshot_20260805_090910_179850.png)
+2026-08-05 09:09:11 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_090911_251802.png (region=[24, 175, 448, 454])
+2026-08-05 09:09:11 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_090910_179850.png vs ./tmp/screenshot_20260805_090911_251802.png)
+2026-08-05 09:09:12 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_090912_430898.png (region=[24, 175, 448, 454])
+2026-08-05 09:09:12 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_090911_251802.png vs ./tmp/screenshot_20260805_090912_430898.png)
+2026-08-05 09:09:13 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_090913_463678.png (region=[24, 175, 448, 454])
+2026-08-05 09:09:14 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_090912_430898.png vs ./tmp/screenshot_20260805_090913_463678.png)
+2026-08-05 09:09:14 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_090914_540185.png (region=[24, 175, 448, 454])
+2026-08-05 09:09:15 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_090913_463678.png vs ./tmp/screenshot_20260805_090914_540185.png)
+2026-08-05 09:09:16 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_090915_630970.png (region=[24, 175, 448, 454])
+2026-08-05 09:09:16 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_090914_540185.png vs ./tmp/screenshot_20260805_090915_630970.png)
+2026-08-05 09:09:17 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_090916_730877.png (region=[24, 175, 448, 454])
+2026-08-05 09:09:17 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_090915_630970.png vs ./tmp/screenshot_20260805_090916_730877.png)
+2026-08-05 09:09:18 | DEBUG   | screenshot | 截图完成: ./tmp/screenshot_20260805_090917_826009.png (region=[24, 175, 448, 454])
+2026-08-05 09:09:18 | DEBUG   | detector | SSIM score=1.0000 threshold=0.05 has_change=False (./tmp/screenshot_20260805_090916_730877.png vs ./tmp/screenshot_20260805_090917_826009.png)
