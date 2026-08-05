@@ -685,6 +685,9 @@ class MainWindow(QMainWindow):
 
     def _poll_selector(self):
         """轮询区域选择器状态"""
+        if self._selector is None:
+            self._selector_timer.stop()
+            return
         if not self._selector.isVisible():
             self._selector_timer.stop()
             if self._selector.result_region:

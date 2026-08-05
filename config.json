@@ -4,10 +4,10 @@
         "interval": 0.5,
         "change_threshold": 0.05,
         "screenshot_region": [
-            24,
-            175,
-            448,
-            454
+            560,
+            99,
+            728,
+            526
         ]
     },
     "ai": {
